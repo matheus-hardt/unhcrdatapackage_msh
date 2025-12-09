@@ -125,7 +125,7 @@ app_ui <- function() {
                                
                                Not only, you will enhance your data literacy but also you will save the time that would be needed to rebuild each chart on your own. 
                                If you detect any issue on this site, or if you have an idea for a new chart to add in the library, please fill a ", 
-                               tags$a(href="https://github.com/Edouard-Legoupil/unhcrdatapackage/issues/new/choose", "ticket here")
+                               tags$a(href="https://github.com/Edouard-Legoupil/unhcrviz/issues/new/choose", "ticket here")
                             )
                     ),
                     column( 6,
@@ -183,7 +183,7 @@ app_ui <- function() {
 golem_add_external_resources <- function(){
 
   addResourcePath(
-    'www', system.file('app/www', package = "unhcrdatapackage")
+    'www', system.file('app/www', package = "unhcrviz")
   )
 
   tags$head(
@@ -192,7 +192,7 @@ golem_add_external_resources <- function(){
     
     # <script src="https://kit.fontawesome.com/6e9406f45f.js" crossorigin="anonymous"></script>
     tags$script(src = "https://kit.fontawesome.com/6e9406f45f.js"),
-    tags$title("unhcrdatapackage"),
+    tags$title("unhcrviz"),
     # Add here all the external resources
     # If you have a custom.css in the inst/app/www
     # Or for example, you can add shinyalert::useShinyalert() here
@@ -207,7 +207,7 @@ golem_add_external_resources <- function(){
     tags$meta(name="twitter:title", content="Data Literacy on Forced Displacement"),
     tags$meta(name="twitter:description", content="Numbers have an important story to TELL, They rely on YOU to give them a voice!"),
     tags$meta(name="twitter:url", content="https://rstudio.unhcr.org/Data_Literacy/"),
-    tags$meta(name="twitter:image", content="https://edouard-legoupil.github.io/unhcrdatapackage/reference/figures/hex-UnhcrDataPackage.png")
+    tags$meta(name="twitter:image", content="https://edouard-legoupil.github.io/unhcrviz/reference/figures/hex-unhcrviz.png")
     
 
   )

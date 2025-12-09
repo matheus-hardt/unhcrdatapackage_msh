@@ -37,11 +37,11 @@ mod_home_ui <- function(id){
                   #,
                  # br(),
                   # p ('This app conveniently bring together a series of predefined plots in order to improve data literacy and facilitate the creation of',
-                  # tags$a(href="https://edouard-legoupil.github.io/unhcrdatapackage/tuto/tutorial.html", "persuasive data stories") ,
+                  # tags$a(href="https://edouard-legoupil.github.io/unhcrviz/tuto/tutorial.html", "persuasive data stories") ,
                   # '. Each plot is created through a function that provides a recipe that creates a re-usable chart in line with a',
                   # tags$a(href="https://www.columnfivemedia.com/divisible-content-strategy-gives-brand-less/", "Divisible Content Strategy"),
                   # '. You may',
-                  # tags$a(href="https://edouard-legoupil.github.io/unhcrdatapackage/articles/library.html", "enhance the charts story-telling ability"),
+                  # tags$a(href="https://edouard-legoupil.github.io/unhcrviz/articles/library.html", "enhance the charts story-telling ability"),
                   # ' by adjusting the message in the title, highlighting specific parts of the data or adding annotation to ease interpretation or provide more contextual background.')
 
 

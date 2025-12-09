@@ -367,7 +367,7 @@ mod_plotviz_server <- function(id, thisPlot, reactiveParameters){
           ggplot2::annotate("text", x = 1, y = 1, size = 11, 
                             label = "There was a schmilblick..." ) +  
           ggplot2::theme_void(), 
-       codeinit = "# install.packages(\"pak\") \n # pak::pkg_install(\"edouard-legoupil/unhcrdatapackage\") \n library(\"unhcrdatapackage\")"   
+       codeinit = "# install.packages(\"pak\") \n # pak::pkg_install(\"edouard-legoupil/unhcrviz\") \n library(\"unhcrviz\")"   
        )
     
      ## Observe Point
