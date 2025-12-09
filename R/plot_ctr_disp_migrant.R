@@ -43,7 +43,7 @@
 #' )
 #' # plot_ctr_disp_migrant(year = 2024,
 #' #                     country_asylum_iso3c = "FRA" )
-plot_ctr_disp_migrant <- function(year = 2021,
+plot_ctr_disp_migrant <- function(year = 2024,
                                   country_asylum_iso3c,
                                   top_n_countries = 10) {
   # Function disabled due to missing migrants data

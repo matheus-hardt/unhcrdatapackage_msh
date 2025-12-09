@@ -25,7 +25,7 @@
 
 #' @examples
 #' ## generate for one country
-#' # unhcrdatapackage::template_CtryPrez(year = 2022, 
+#' # unhcrdatapackage::template_CtryPrez(year = 2024, 
 #' #                             country_asylum_iso3c = "CHL",
 #' #                             folder = "Report")
 #' 
@@ -48,10 +48,10 @@
 #' #     # i <- 1
 #' #     country_asylum_iso3ci = as.character(ctr[i ,2 ])
 #' #     cat(paste0(country_asylum_iso3ci, "\n"))
-#' #     unhcrdatapackage::template_CtryFactsheet(year = 2022, 
+#' #     unhcrdatapackage::template_CtryFactsheet(year = 2024, 
 #' #                                 country_asylum_iso3c = country_asylum_iso3ci,
 #' #                                folder = "Report")  }
-template_CtryPrez <- function(year = 2022,
+template_CtryPrez <- function(year = 2024,
                                    country_asylum_iso3c,   
                               folder = "Report") {
   

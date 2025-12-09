@@ -19,7 +19,7 @@
 #'   year = 2024,
 #'   country_asylum_iso3c = "COL"
 #' )
-plot_ctr_keyfig <- function(year = 2021, 
+plot_ctr_keyfig <- function(year = 2024, 
                             country_asylum_iso3c) {
   
   # Get country name

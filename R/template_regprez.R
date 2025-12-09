@@ -27,7 +27,7 @@
 #'
 
 #' @examples
-#' # template_RegPrez(year = 2022, region = "Americas", lag = 10,   folder = "Report")
+#' # template_RegPrez(year = 2024, region = "Americas", lag = 10,   folder = "Report")
 #' 
 #' # # Generate for a specific region
 #' # region <- "Americas"
@@ -48,11 +48,11 @@
 #' #     # i <- 1
 #' #     country_asylum_iso3c = as.character(ctr[i ,2 ])
 #' #     cat(paste0(country_asylum_iso3c, "\n"))
-#' #     unhcrdatapackage::template_CtryPrez(year = 2022, 
+#' #     unhcrdatapackage::template_CtryPrez(year = 2024, 
 #' #                                   country_asylum_iso3c = country_asylum_iso3c,  
 #' #                                   folder = "Report")
 #' #   }
-template_RegPrez <- function(year = 2022,
+template_RegPrez <- function(year = 2024,
                              region = "Americas",
                              lag = 10,
                              folder = "Report") {

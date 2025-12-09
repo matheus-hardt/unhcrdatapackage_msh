@@ -34,7 +34,7 @@
 #'
 #' @examples
 #' plot_ctr_population_type_abs(
-#'   year = 2020,
+#'   year = 2024,
 #'   country_asylum_iso3c = "USA",
 #'   top_n_countries = 4,
 #'   pop_type = "REF",
@@ -43,13 +43,13 @@
 #'
 #' ## Same with 9 top countries and Asylum-seekers included
 #' plot_ctr_population_type_abs(
-#'   year = 2020,
+#'   year = 2024,
 #'   country_asylum_iso3c = "USA",
 #'   top_n_countries = 9,
 #'   pop_type = "ASY",
 #'   show_diff_label = TRUE
 #' )
-plot_ctr_population_type_abs <- function(year = 2021,
+plot_ctr_population_type_abs <- function(year = 2024,
                                          country_asylum_iso3c,
                                          top_n_countries = 9,
                                          pop_type = "REF",

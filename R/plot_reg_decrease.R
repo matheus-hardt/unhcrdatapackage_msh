@@ -31,13 +31,13 @@
 #' @export
 #' @examples
 #' plot_reg_decrease(
-#'   year = 2021,
+#'   year = 2024,
 #'   lag = 5,
 #'   topn = 5,
 #'   region = "The Americas",
 #'   pop_type = c("REF", "ASY", "OIP")
 #' )
-plot_reg_decrease <- function(year = 2021,
+plot_reg_decrease <- function(year = 2024,
                               lag = 5,
                               topn = 5,
                               region = "The Americas",

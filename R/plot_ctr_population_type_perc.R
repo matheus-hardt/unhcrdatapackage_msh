@@ -28,7 +28,7 @@
 #'
 #' @examples
 #' plot_ctr_population_type_perc(
-#'   year = 2021,
+#'   year = 2024,
 #'   country_asylum_iso3c = "BRA",
 #'   top_n_countries = 9,
 #'   pop_type = "REF",
@@ -36,14 +36,14 @@
 #' )
 #'
 #' plot_ctr_population_type_perc(
-#'   year = 2021,
+#'   year = 2024,
 #'   country_asylum_iso3c = "BRA",
 #'   top_n_countries = 9,
 #'   pop_type = "ASY",
 #'   show_diff_label = TRUE
 #' )
 
-plot_ctr_population_type_perc <- function(year = 2021,
+plot_ctr_population_type_perc <- function(year = 2024,
                                           country_asylum_iso3c,
                                           top_n_countries = 9,
                                           pop_type = "REF",

@@ -26,7 +26,7 @@
 #'
 #' @examples
 #' p <- plot_ctr_population_type_per_year(
-#'   year = 2018,
+#'   year = 2024,
 #'   country_asylum_iso3c = "BRA",
 #'   lag = 5,
 #'   pop_type = c(

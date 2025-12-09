@@ -33,7 +33,7 @@
 #'   pop_type = c("REF", "ASY")
 #' )
 
-plot_ctr_diff_in_pop_groups <- function(year = 2021,
+plot_ctr_diff_in_pop_groups <- function(year = 2024,
                                         country_asylum_iso3c = country_asylum_iso3c,
                                         pop_type = pop_type) {
   country_name_text <- refugees::population |>

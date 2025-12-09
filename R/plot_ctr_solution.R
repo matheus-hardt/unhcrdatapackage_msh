@@ -33,14 +33,14 @@
 #'
 #' @examples
 #' plot_ctr_solution(
-#'   year = 2021,
+#'   year = 2024,
 #'   country_asylum_iso3c = "UGA",
 #'   lag = 10,
 #'   sol_type = c("NAT", "RST", "RET", "RDP")
 #' )
 
 plot_ctr_solution <- function(
-  year = 2021,
+  year = 2024,
   lag = 10,
   country_asylum_iso3c = country_asylum_iso3c,
   sol_type

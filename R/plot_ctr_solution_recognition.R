@@ -28,7 +28,7 @@
 #'   lag = 10
 #' )
 plot_ctr_solution_recognition <- function(
-  year = 2021,
+  year = 2024,
   lag = 10,
   country_asylum_iso3c = country_asylum_iso3c
 ) {

@@ -36,13 +36,13 @@
 #' )
 #'
 #' # plot_reg_increase(
-#' #   year = 2021,
+#' #   year = 2024,
 #' #   lag = 5,
 #' #   topn = 5,
 #' #   region = "Asia",
 #' #   pop_type = c("REF", "ASY", "OIP")
 #' # )
-plot_reg_increase <- function(year = 2021,
+plot_reg_increase <- function(year = 2024,
                               lag = 5,
                               topn = 5,
                               region = "The Americas",

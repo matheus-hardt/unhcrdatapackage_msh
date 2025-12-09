@@ -100,15 +100,14 @@ Below is the library with all Country Focused questions organised around the 7 k
 #' @importFrom refugees population
 #'
 #' @export
-plot_ctr_keyfig <- function(year = 2021, 
+plot_ctr_keyfig <- function(year = 2024,
                             country_asylum_iso3c) {
-  
   # Get country name
   country_name_text <- refugees::population |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
     dplyr::slice(1) |>
     dplyr::pull(coa_name)
-  
+
   # Calculate Total POC for current year
   total_poc <- refugees::population |>
     dplyr::filter(
@@ -117,7 +116,7 @@ plot_ctr_keyfig <- function(year = 2021,
     ) |>
     dplyr::summarise(total = sum(refugees, asylum_seekers, idps, oip, stateless, ooc, hst, na.rm = TRUE)) |>
     dplyr::pull()
-  
+
   # Calculate Total POC for previous year
   total_poc_prev <- refugees::population |>
     dplyr::filter(
@@ -126,10 +125,10 @@ plot_ctr_keyfig <- function(year = 2021,
     ) |>
     dplyr::summarise(total = sum(refugees, asylum_seekers, idps, oip, stateless, ooc, hst, na.rm = TRUE)) |>
     dplyr::pull()
-  
+
   # Calculate percentage change
   perc_change_poc <- (total_poc - total_poc_prev) / total_poc_prev * 100
-  
+
   # Prepare data for plotting
   keyfig <- refugees::population |>
     dplyr::filter(
@@ -162,30 +161,30 @@ plot_ctr_keyfig <- function(year = 2021,
       pal = population_type_label,
       fig = population_type_label
     )
-  
+
   # Plotting
   p <- ggplot2::ggplot(keyfig) +
     # LAYER 1: ICONS (Switched to geom_text)
     ggplot2::geom_text(
       ggplot2::aes(
-        x = 0.5,       # Centered horizontally in the facet
-        y = 1.8,       # Positioned in upper half
+        x = 0.5, # Centered horizontally in the facet
+        y = 1.8, # Positioned in upper half
         label = icon,
         color = pal
       ),
       family = "Font Awesome 6 Solid", # Ensure this font is loaded via sysfonts/showtext
-      size = 10        # Adjusted size for geom_text (unit is mm, not pt)
+      size = 10 # Adjusted size for geom_text (unit is mm, not pt)
     ) +
     # LAYER 2: LABELS (Switched to geom_text)
     ggplot2::geom_text(
       ggplot2::aes(
-        x = 0.5,       # Centered horizontally
-        y = 0.8,       # Positioned below icon
+        x = 0.5, # Centered horizontally
+        y = 0.8, # Positioned below icon
         label = label,
         color = pal
       ),
       family = "Lato", # Ensure Lato is loaded
-      size = 5,        # Adjusted size
+      size = 5, # Adjusted size
       fontface = "bold"
     ) +
     ggplot2::scale_color_manual(values = c(
@@ -218,7 +217,7 @@ plot_ctr_keyfig <- function(year = 2021,
       plot.title = ggplot2::element_text(family = "Lato", face = "bold", size = 18, hjust = 0.5),
       plot.subtitle = ggplot2::element_text(family = "Lato", size = 12, hjust = 0.5, margin = ggplot2::margin(b = 20))
     )
-  
+
   return(p)
 }
 ```
@@ -262,10 +261,9 @@ plot_ctr_keyfig(
 #' @export
 #'
 
-plot_ctr_treemap <- function(year = 2021,
+plot_ctr_treemap <- function(year = 2024,
                              country_asylum_iso3c = country_asylum_iso3c) {
-  
-    dict_pop_type_name <- c(
+  dict_pop_type_name <- c(
     "refugees" = "Refugees",
     "returned_refugees" = "Returned refugees",
     "asylum_seekers" = "Asylum-seekers",
@@ -276,7 +274,7 @@ plot_ctr_treemap <- function(year = 2021,
     "ooc" = "Others of concern to UNHCR",
     "hst" = "Host community"
   )
-  
+
   country_name_text <- refugees::population |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
     dplyr::slice(1) |>
@@ -355,7 +353,7 @@ plot_ctr_treemap <- function(year = 2021,
 ```{r examples-plot_ctr_treemap, fig.retina = 2, fig.width = 8, fig.asp = 0.618, fig.align = "center", dev = "ragg_png", out.width = "90%"}
 #
 plot_ctr_treemap(
-  year = 2021,
+  year = 2024,
   country_asylum_iso3c = "USA"
 )
 ```
@@ -578,7 +576,7 @@ After inflating the template
 
 ```{r examples-plot_ctr_population_type_per_year, fig.retina = 2, fig.width = 8, fig.asp = 0.618, fig.align = "center", dev = "ragg_png", out.width = "90%"}
 p <- plot_ctr_population_type_per_year(
-  year = 2018,
+  year = 2024,
   country_asylum_iso3c = "BRA",
   lag = 5,
   pop_type = c(
@@ -661,7 +659,7 @@ After inflating the template
 #'
 #' @export
 #'
-plot_ctr_population_type_abs <- function(year = 2021,
+plot_ctr_population_type_abs <- function(year = 2024,
                                          country_asylum_iso3c,
                                          top_n_countries = 9,
                                          pop_type = "REF",
@@ -897,7 +895,7 @@ plot_ctr_population_type_abs <- function(year = 2021,
 
 ```{r examples-plot_ctr_population_type_abs, fig.retina = 2, fig.width = 8, fig.asp = 0.618, fig.align = "center", dev = "ragg_png", out.width = "90%"}
 plot_ctr_population_type_abs(
-  year = 2020,
+  year = 2024,
   country_asylum_iso3c = "USA",
   top_n_countries = 4,
   pop_type = "REF",
@@ -906,7 +904,7 @@ plot_ctr_population_type_abs(
 
 ## Same with 9 top countries and Asylum-seekers included
 plot_ctr_population_type_abs(
-  year = 2020,
+  year = 2024,
   country_asylum_iso3c = "USA",
   top_n_countries = 9,
   pop_type = "ASY",
@@ -951,7 +949,7 @@ plot_ctr_population_type_abs(
 #' @export
 #'
 
-plot_ctr_population_type_perc <- function(year = 2021,
+plot_ctr_population_type_perc <- function(year = 2024,
                                           country_asylum_iso3c,
                                           top_n_countries = 9,
                                           pop_type = "REF",
@@ -1180,7 +1178,7 @@ plot_ctr_population_type_perc <- function(year = 2021,
 
 ```{r examples-plot_ctr_population_type_perc, fig.retina = 2, fig.width = 8, fig.asp = 0.618, fig.align = "center", dev = "ragg_png", out.width = "90%"}
 plot_ctr_population_type_perc(
-  year = 2021,
+  year = 2024,
   country_asylum_iso3c = "BRA",
   top_n_countries = 9,
   pop_type = "REF",
@@ -1188,7 +1186,7 @@ plot_ctr_population_type_perc(
 )
 
 plot_ctr_population_type_perc(
-  year = 2021,
+  year = 2024,
   country_asylum_iso3c = "BRA",
   top_n_countries = 9,
   pop_type = "ASY",
@@ -1231,7 +1229,7 @@ plot_ctr_population_type_perc(
 #' @export
 #'
 
-plot_ctr_diff_in_pop_groups <- function(year = 2021,
+plot_ctr_diff_in_pop_groups <- function(year = 2024,
                                         country_asylum_iso3c = country_asylum_iso3c,
                                         pop_type = pop_type) {
   country_name_text <- refugees::population |>
@@ -1617,7 +1615,7 @@ plot_ctr_origin_history(
 #' @export
 #'
 
-plot_ctr_destination <- function(year = 2021,
+plot_ctr_destination <- function(year = 2024,
                                  country_origin_iso3c,
                                  pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC")) {
   dict_pop_type_label <- c(
@@ -1771,7 +1769,7 @@ plot_ctr_destination <- function(year = 2021,
 ```{r examples-plot_ctr_destination, fig.retina = 2, fig.width = 8, fig.asp = 0.618, fig.align = "center", dev = "ragg_png", out.width = "90%"}
 #
 plot_ctr_destination(
-  year = 2021,
+  year = 2024,
   country_origin_iso3c = "COL",
   pop_type = c("REF", "ASY")
 )
@@ -1981,7 +1979,7 @@ plot_ctr_pyramid <- function(year,
     dplyr::distinct(coa_name) |>
     dplyr::pull() |>
     head(1)
-  
+
   ctrylabel <- refugees::population |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
     dplyr::distinct(coa_name) |>
@@ -2295,7 +2293,7 @@ plot_ctr_location <- function(year,
 #                  country_asylum_iso3c = "COL",
 #                  pop_type = c("ASY", "REF", "OIP"))
 #
-# plot_ctr_location(year = 2021,
+# plot_ctr_location(year = 2024,
 #                  country_asylum_iso3c = "COL",
 #                  pop_type = c("IDP"))
 #
@@ -2303,7 +2301,7 @@ plot_ctr_location <- function(year,
 #                  country_asylum_iso3c = "CAN",
 #                  pop_type = c("ASY", "REF", "OIP"))
 #
-# plot_ctr_location(year = 2021,
+# plot_ctr_location(year = 2024,
 #                  country_asylum_iso3c = "MEX",
 #                  pop_type = c("ASY", "REF", "OIP"))
 ```
@@ -2503,21 +2501,20 @@ plot_ctr_recognition(
 plot_ctr_asylum <- function(year = 2024,
                             country_asylum_iso3c,
                             lag = 10) {
-  
   # 1. Get Country Name
   country_name_text <- refugees::population |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
     dplyr::distinct(coa_name) |>
     dplyr::pull() |>
     utils::head(1)
-  
+
   # 2. Prepare Applications Data
   apps <- refugees::asylum_applications |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
     dplyr::group_by(year, coa_iso) |>
     dplyr::summarize(NumberApplications = sum(applied, na.rm = TRUE), .groups = "drop") |>
     dplyr::rename(CountryAsylumCode = coa_iso)
-  
+
   # 3. Prepare Decisions Data (FIXED SECTION)
   decs <- refugees::asylum_decisions |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
@@ -2527,11 +2524,11 @@ plot_ctr_asylum <- function(year = 2024,
       ComplementaryProtection = sum(dec_other, na.rm = TRUE),
       OtherwiseClosed = sum(dec_closed, na.rm = TRUE),
       Rejected = sum(dec_rejected, na.rm = TRUE),
-      TotalDecided = sum(dec_total, na.rm = TRUE), 
+      TotalDecided = sum(dec_total, na.rm = TRUE),
       .groups = "drop"
     ) |>
     dplyr::rename(CountryAsylumCode = coa_iso)
-  
+
   # 4. Join and Reshape
   data <- dplyr::inner_join(apps, decs, by = c("year", "CountryAsylumCode")) |>
     dplyr::filter(year >= (!!year - lag)) |> # Use !! to unquote the function argument
@@ -2542,20 +2539,20 @@ plot_ctr_asylum <- function(year = 2024,
       values_to = "Total",
       values_drop_na = TRUE
     )
-  
+
   # 5. Factor Management
   data$AsylumStage <- dplyr::recode(data$AsylumStage,
-                                    "NumberApplications" = "Total Number of Applications",
-                                    "TotalDecided" = "Total Number of Decisions",
-                                    "Recognized" = "Number of Refugee Status Recognition Decisions"
+    "NumberApplications" = "Total Number of Applications",
+    "TotalDecided" = "Total Number of Decisions",
+    "Recognized" = "Number of Refugee Status Recognition Decisions"
   )
-  
+
   data$AsylumStage <- factor(data$AsylumStage, levels = c(
     "Total Number of Applications",
     "Total Number of Decisions",
     "Number of Refugee Status Recognition Decisions"
   ))
-  
+
   # 6. Plotting
   p <- ggplot2::ggplot() +
     ggplot2::geom_bar(
@@ -2582,10 +2579,9 @@ plot_ctr_asylum <- function(year = 2024,
       panel.grid.major.x = ggplot2::element_blank(),
       legend.position = "bottom" # Usually better for long legends
     )
-  
+
   return(p)
 }
-
 ```
 
 ```{r example-plot_ctr_asylum}
@@ -3024,7 +3020,7 @@ plot_ctr_processing_time(
 #'
 
 plot_ctr_solution <- function(
-  year = 2021,
+  year = 2024,
   lag = 10,
   country_asylum_iso3c = country_asylum_iso3c,
   sol_type
@@ -3153,7 +3149,7 @@ plot_ctr_solution <- function(
 
 ```{r example-plot_ctr_solution}
 plot_ctr_solution(
-  year = 2021,
+  year = 2024,
   country_asylum_iso3c = "UGA",
   lag = 10,
   sol_type = c("NAT", "RST", "RET", "RDP")
@@ -3189,7 +3185,7 @@ plot_ctr_solution(
 #' @return a ggplot2 object
 #' @export
 plot_ctr_solution_recognition <- function(
-  year = 2021,
+  year = 2024,
   lag = 10,
   country_asylum_iso3c = country_asylum_iso3c
 ) {
@@ -3379,7 +3375,7 @@ dumbel
 #'
 #' @export
 #'
-plot_ctr_disp_migrant <- function(year = 2021,
+plot_ctr_disp_migrant <- function(year = 2024,
                                   country_asylum_iso3c,
                                   top_n_countries = 10) {
   # Function disabled due to missing migrants data

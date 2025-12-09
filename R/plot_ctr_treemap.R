@@ -26,11 +26,11 @@
 #' @examples
 #' #
 #' plot_ctr_treemap(
-#'   year = 2021,
+#'   year = 2024,
 #'   country_asylum_iso3c = "USA"
 #' )
 
-plot_ctr_treemap <- function(year = 2021,
+plot_ctr_treemap <- function(year = 2024,
                              country_asylum_iso3c = country_asylum_iso3c) {
   
     dict_pop_type_name <- c(

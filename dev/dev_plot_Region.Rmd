@@ -44,7 +44,7 @@ pkgload::load_all(export_all = FALSE)
 #' @param year Numeric value of the year (for instance 2020)
 #' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
 #' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
-#' 
+#'
 #' @importFrom ggplot2 ggplot aes coord_flip element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
 #'             geom_label geom_text labs position_stack scale_color_manual scale_colour_manual
@@ -54,14 +54,13 @@ pkgload::load_all(export_all = FALSE)
 #' @importFrom scales label_percent
 #' @importFrom treemapify geom_treemap geom_treemap_text
 #' @importFrom unhcrthemes theme_unhcr
-#' 
+#'
 #' @return plot a ggplot2 object
-#' 
+#'
 #' @export
 plot_reg_treemap <- function(year = 2024,
                              region = "The Americas",
                              pop_type = c("REF", "ASY", "IDP", "OIP", "OOC", "STA")) {
-  
   ## Filter popdata for the country report
   datatree <- refugees::population |>
     dplyr::filter(year == !!year) |>
@@ -85,17 +84,15 @@ plot_reg_treemap <- function(year = 2024,
     dplyr::filter(population_type_label %in% pop_type) |>
     dplyr::group_by(year, unhcr_region, population_type_label) |>
     dplyr::summarise(value = sum(value, na.rm = TRUE), .groups = "drop") |>
-    
     # FIX APPLIED HERE: Ungroup the data frame after summarising
     # This allows sum(value) in the next step to calculate the total across the entire region.
     dplyr::ungroup() |>
-    
     # Calculate frequencies relative to the total sum of the regional data
     dplyr::mutate(
       freqinReg = scales::label_percent(accuracy = .1, suffix = "%")(value / sum(value)),
       freq = freqinReg # Keeping 'freq' for consistency, though 'freqinReg' is used in the plot
     )
-  
+
   # Treemapify
   p <- ggplot2::ggplot(
     datatree,
@@ -103,7 +100,7 @@ plot_reg_treemap <- function(year = 2024,
       area = value,
       fill = population_type_label,
       # Use the calculated freqinReg for the label
-      label = paste0(freqinReg, "\n", population_type_label) 
+      label = paste0(freqinReg, "\n", population_type_label)
     )
   ) +
     treemapify::geom_treemap() +
@@ -126,12 +123,12 @@ plot_reg_treemap <- function(year = 2024,
     ggplot2::labs(
       title = paste0("Population of Concern & Affected Host Communities in ", region),
       # Use the total sum from the corrected datatree for the subtitle
-      subtitle = paste0("As of ", year, ", a total of ", format(round(sum(datatree$value), -3), big.mark = ","), " Individuals"), 
+      subtitle = paste0("As of ", year, ", a total of ", format(round(sum(datatree$value), -3), big.mark = ","), " Individuals"),
       x = "",
       y = "",
       caption = "Source: UNHCR.org/refugee-statistics"
     )
-  
+
   return(p)
 }
 ```
@@ -282,36 +279,35 @@ plot_reg_share(
 ## Evolution Over Time  
     
 ```{r function-plot_reg_evolution}
-#' Evolution over time 
-#' 
-#' Display evoluation over time for specific population group (one or many) and 
+#' Evolution over time
+#'
+#' Display evoluation over time for specific population group (one or many) and
 #' defined number of years (lag)
-#' 
+#'
 #' @param year Numeric value of the year (for instance 2020)
 #' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
-#' @param lag Number of year to used as comparison base 
+#' @param lag Number of year to used as comparison base
 #' @param pop_type Character value. Possible population type (e.g.: REF, IDP, ASY,   OIP, OOC, STA)
-#' 
+#'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
 #'             geom_label geom_text labs  position_stack  scale_color_manual
-#'              scale_colour_manual 
+#'              scale_colour_manual
 #'             geom_text geom_line
-#'             scale_fill_manual scale_x_continuous scale_x_discrete  scale_y_continuous   sym theme 
+#'             scale_fill_manual scale_x_continuous scale_x_discrete  scale_y_continuous   sym theme
 #' @importFrom dplyr  desc select  case_when lag mutate group_by filter summarise ungroup
 #'               pull distinct n arrange across slice left_join
-#' @importFrom stringr str_replace  
+#' @importFrom stringr str_replace
 #' @importFrom scales cut_short_scale label_percent label_number breaks_pretty pretty_breaks
 #' @importFrom unhcrthemes theme_unhcr unhcr_pal
-#' 
+#'
 #' @return a ggplot2 object
-#' 
+#'
 #' @export
 plot_reg_population_type_per_year <- function(year = 2024,
                                               region = "The Americas",
                                               lag = 5,
                                               pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC")) {
-
   # Check if pop_type is a list or a single character
   if (length(pop_type) > 1) {
     pop_type_label <- pop_type
@@ -438,8 +434,7 @@ plot_reg_population_type_per_year(
 #' @return plot a ggplot2 object
 #'
 #' @export
-plot_reg_origin_dest <- function(year = 2024, region = "The Americas"){
-  
+plot_reg_origin_dest <- function(year = 2024, region = "The Americas") {
   # Data Preparation Pipeline (Cleaned in previous steps)
   chords <- refugees::population |>
     dplyr::filter(year == !!year) |>
@@ -453,96 +448,97 @@ plot_reg_origin_dest <- function(year = 2024, region = "The Americas"){
     ) |>
     dplyr::group_by(coo_name, coa_name) |>
     dplyr::summarise(total = sum(total, na.rm = TRUE), .groups = "drop") |>
-    
     # FIX APPLIED HERE: Using coo_name and coa_name which are present after summarize.
     dplyr::mutate(
-      CountryAsylumName = forcats::fct_lump_prop(coa_name, prop = .02, w = total), 
-      CountryOriginName = forcats::fct_lump_prop(coo_name, prop = .02, w = total)  
+      CountryAsylumName = forcats::fct_lump_prop(coa_name, prop = .02, w = total),
+      CountryOriginName = forcats::fct_lump_prop(coo_name, prop = .02, w = total)
     ) |>
-    
     dplyr::group_by(CountryOriginName, CountryAsylumName) |>
     dplyr::summarize(total = sum(total), .groups = "drop") |>
-    
     # Clean up long country names for better visualization
-    dplyr::mutate(CountryOriginName = stringr::str_replace(CountryOriginName, " \\(Bolivarian Republic of\\)", ""),
-                  CountryAsylumName = stringr::str_replace(CountryAsylumName, " \\(Bolivarian Republic of\\)", ""),
-                  CountryOriginName = stringr::str_replace(CountryOriginName, " \\(Plurinational State of\\)", ""),
-                  CountryAsylumName = stringr::str_replace(CountryAsylumName, " \\(Plurinational State of\\)", ""),
-                  CountryOriginName = stringr::str_replace(CountryOriginName, "United States of America", "USA"),
-                  CountryAsylumName = stringr::str_replace(CountryAsylumName, "United States of America", "USA")) |>
-    
+    dplyr::mutate(
+      CountryOriginName = stringr::str_replace(CountryOriginName, " \\(Bolivarian Republic of\\)", ""),
+      CountryAsylumName = stringr::str_replace(CountryAsylumName, " \\(Bolivarian Republic of\\)", ""),
+      CountryOriginName = stringr::str_replace(CountryOriginName, " \\(Plurinational State of\\)", ""),
+      CountryAsylumName = stringr::str_replace(CountryAsylumName, " \\(Plurinational State of\\)", ""),
+      CountryOriginName = stringr::str_replace(CountryOriginName, "United States of America", "USA"),
+      CountryAsylumName = stringr::str_replace(CountryAsylumName, "United States of America", "USA")
+    ) |>
     # Explicitly rename columns to match circlize's expected format (Origin, Destination, Value)
     dplyr::rename(
       origin = CountryOriginName,
       destination = CountryAsylumName,
       value = total
     ) |>
-    
     # Filter out rows where Origin == Destination (internal flow, often messy for OD diagrams)
     dplyr::filter(origin != destination, value > 0)
-  
+
   # Ensure the data frame is cleaned for plotting
   chords <- as.data.frame(chords)
-  
+
   # --- FIX: DATA CHECK BEFORE PLOTTING ---
-  
+
   # Check 1: Is the data frame empty?
   if (nrow(chords) == 0) {
     message(paste("No significant population movement found for", region, "in", year, "after lumping."))
     return(invisible(NULL))
   }
-  
+
   # Check 2: Are there enough unique sectors for a Chord Diagram?
   n_sectors <- length(unique(c(chords$origin, chords$destination)))
   if (n_sectors < 2) {
     message(paste("Insufficient unique origins/destinations (", n_sectors, ") found for", region, "to create a meaningful Chord Diagram."))
     return(invisible(NULL))
   }
-  
+
   # --- Plotting ---
-  
+
   # Set graphical parameters to reset them when the function finishes
   old_par <- graphics::par(no.readonly = TRUE)
   on.exit(graphics::par(old_par), add = TRUE)
-  
+
   # Initialize the circlize plot
   circlize::circos.clear()
-  
-  # Create the Chord Diagram 
+
+  # Create the Chord Diagram
   circlize::chordDiagram(
     chords,
-    directional = 1, 
-    direction.type = c("diffHeight", "arrows"), 
-    diffHeight  = 0.02, 
-    link.arr.length = 0.1, 
+    directional = 1,
+    direction.type = c("diffHeight", "arrows"),
+    diffHeight = 0.02,
+    link.arr.length = 0.1,
     link.arr.width = 0.1,
     link.arr.type = "big.arrow",
     annotationTrack = "grid",
-    preAllocateTracks = list(track.height = 0.15) 
+    preAllocateTracks = list(track.height = 0.15)
   )
-  
+
   # Add text labels to the grid sectors
-  circlize::circos.track(track.index = 1,
-                         panel.fun = function(x, y) {
-                           circlize::circos.text(
-                             circlize::CELL_META$xcenter,
-                             circlize::CELL_META$ylim[1],
-                             circlize::CELL_META$sector.index,
-                             facing = "clockwise",
-                             niceFacing = TRUE,
-                             adj = c(0, 0.5)
-                           )
-                         },
-                         bg.border = NA)
-  
+  circlize::circos.track(
+    track.index = 1,
+    panel.fun = function(x, y) {
+      circlize::circos.text(
+        circlize::CELL_META$xcenter,
+        circlize::CELL_META$ylim[1],
+        circlize::CELL_META$sector.index,
+        facing = "clockwise",
+        niceFacing = TRUE,
+        adj = c(0, 0.5)
+      )
+    },
+    bg.border = NA
+  )
+
   # Add Title
-  graphics::title(main = "Movement of Forcibly Displaced Population",
-                  sub = paste0("In ", region, " as of ", year),
-                  cex.main = 1.5)
-  
+  graphics::title(
+    main = "Movement of Forcibly Displaced Population",
+    sub = paste0("In ", region, " as of ", year),
+    cex.main = 1.5
+  )
+
   # Reset circlize layout
   circlize::circos.clear()
-  
+
   return(invisible(NULL))
 }
 ```
@@ -566,7 +562,6 @@ plot_reg_population_type_abs <- function(year = 2024,
                                          top_n_countries = 5,
                                          pop_type = "REF",
                                          show_diff_label = TRUE) {
-
   pop_type_label_dict <- c(
     "REF" = "Refugees",
     "ASY" = "Asylum-seekers",
@@ -693,7 +688,7 @@ plot_reg_population_type_abs(
 #' @return a ggplot2 object
 #'
 #' @export
-plot_reg_decrease <- function(year = 2021,
+plot_reg_decrease <- function(year = 2024,
                               lag = 5,
                               topn = 5,
                               region = "The Americas",
@@ -788,7 +783,7 @@ plot_reg_decrease <- function(year = 2021,
   
 ```{r example-plot_reg_decrease}
 plot_reg_decrease(
-  year = 2021,
+  year = 2024,
   lag = 5,
   topn = 5,
   region = "The Americas",
@@ -830,19 +825,18 @@ plot_reg_decrease(
 #' @return a ggplot2 object
 #'
 #' @export
-plot_reg_increase <- function(year = 2021,
+plot_reg_increase <- function(year = 2024,
                               lag = 5,
                               topn = 5,
                               region = "The Americas",
                               pop_type = c("REF", "ASY", "OIP")) {
-  
   thisyear <- year
   baseline <- thisyear - lag
-  
+
   # Define required column names dynamically
   col_this_year <- paste0("year_", thisyear)
   col_baseline <- paste0("year_", baseline)
-  
+
   data_pivot <- refugees::population |>
     dplyr::filter(year == baseline | year == thisyear) |>
     dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region")) |>
@@ -868,48 +862,44 @@ plot_reg_increase <- function(year = 2021,
     dplyr::mutate(
       coa_name = stringr::str_replace(coa_name, "Democratic Republic of the Congo", "DRC")
     ) |>
-    
     # Use pivot_wider to create year_YYYY columns.
     dplyr::mutate(year_col = paste0("year_", year)) |>
     tidyr::pivot_wider(names_from = year_col, values_from = value, values_fill = NA) # Set fill to NA initially
-    
-  
+
+
   # --- FIX: Use any_of() for defensive column selection ---
-  
+
   # Define columns to select defensively
   required_cols <- c("coa_name", col_this_year, col_baseline)
-  
+
   data <- data_pivot |>
     # 1. Use select(any_of()) to get required columns. Missing columns are silently ignored,
     # and we then fill them with 0 in the next step.
     # Note: coa_name might be the only column if no data exists.
-    dplyr::select(tidyselect::any_of(required_cols)) |> 
-    
+    dplyr::select(tidyselect::any_of(required_cols)) |>
     # 2. Add missing columns with value 0 if they don't exist by using coalesce on required columns.
     # We must ensure all required columns are present for the next calculation.
     dplyr::mutate(
-        !!col_this_year := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_this_year), .default = NA, ~.), 0),
-        !!col_baseline := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_baseline), .default = NA, ~.), 0)
+      !!col_this_year := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_this_year), .default = NA, ~.), 0),
+      !!col_baseline := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_baseline), .default = NA, ~.), 0)
     ) |>
-    
     # 3. Calculate the gap
     dplyr::mutate(gap = .data[[col_this_year]] - .data[[col_baseline]]) |>
-    
     dplyr::arrange(dplyr::desc(gap)) |>
     utils::head(topn)
-  
+
   # --- Plotting ---
-  
+
   # If the data frame is empty after filtering/lumping, return NULL gracefully
   if (nrow(data) == 0) {
     message(paste("No increase data found for", region, "between", baseline, "and", thisyear))
     return(invisible(NULL))
   }
-  
+
   # The column names used in ggplot must also be dynamically defined
   aes_x_baseline <- paste0("year_", baseline)
   aes_x_thisyear <- paste0("year_", thisyear)
-  
+
   p <- ggplot2::ggplot(
     data,
     ggplot2::aes(
@@ -954,7 +944,7 @@ plot_reg_increase <- function(year = 2021,
       panel.grid.major.x = ggplot2::element_line(color = "#cbcbcb"),
       panel.grid.major.y = ggplot2::element_blank()
     )
-  
+
   return(p)
 }
 ```
@@ -970,7 +960,7 @@ plot_reg_increase(
 )
 
 # plot_reg_increase(
-#   year = 2021,
+#   year = 2024,
 #   lag = 5,
 #   topn = 5,
 #   region = "Asia",
@@ -1366,7 +1356,6 @@ plot_reg_rsd(
 plot_reg_solution <- function(year = 2024,
                               region = "The Americas",
                               lag = 10) {
-
   solutions_long <- refugees::solutions |>
     dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region")) |>
     dplyr::filter(unhcr_region == region) |>

@@ -28,12 +28,12 @@
 #' @examples
 #' #
 #' plot_ctr_destination(
-#'   year = 2021,
+#'   year = 2024,
 #'   country_origin_iso3c = "COL",
 #'   pop_type = c("REF", "ASY")
 #' )
 
-plot_ctr_destination <- function(year = 2021,
+plot_ctr_destination <- function(year = 2024,
                                  country_origin_iso3c,
                                  pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC")) {
   dict_pop_type_label <- c(
