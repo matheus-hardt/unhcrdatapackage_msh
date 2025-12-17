@@ -1042,7 +1042,9 @@ plot_ctr_location <- function(
     scale = "medium",
     returnclass = "sf"
   ) |>
-    dplyr::filter(iso_a3 != "ATA") # Exclude Antarctica for better view
+    dplyr::filter(iso_a3 != "ATA") |> # Exclude Antarctica for better view
+    sf::st_make_valid()
+
 
   # Join Data to Map
   map_data <- world_sf |>
