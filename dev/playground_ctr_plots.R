@@ -1500,7 +1500,7 @@ plot_ctr_origin_recognition <- function(
       y = "",
       caption = "Source: UNHCR.org/refugee-statistics "
     ) +
-    ggplot2::scale_x_discrete(labels = scales::label_wrap(25)) +
+    ggplot2::scale_x_discrete(labels = scales::label_wrap(20)) +
     unhcrthemes::theme_unhcr(
       font_size = 14,
       grid = FALSE,
@@ -1510,7 +1510,6 @@ plot_ctr_origin_recognition <- function(
     ) +
     ggplot2::theme(
       axis.text.y = ggplot2::element_text(size = category_font_size),
-      panel.grid.major.x = ggplot2::element_line(color = "#cbcbcb"),
       panel.grid.major.y = ggplot2::element_blank(),
       plot.margin = ggplot2::margin(5, 5, 5, 30)
     )
@@ -1762,7 +1761,8 @@ plot_ctr_population_type_abs <- function(
     df_diff <- df |>
       dplyr::filter(
         !is.na(diff_pop_type_value),
-        diff_pop_type_value != ""
+        diff_pop_type_value != "",
+        diff_pop_type_value != "0.0%"
       ) |>
       dplyr::mutate(
         # Determine change direction
@@ -1818,7 +1818,7 @@ plot_ctr_population_type_abs <- function(
           y = origin_data_prot,
           svg = svg_icon
         ),
-        size = 12 # Adjust size as needed
+        size = 8.5 # Adjust size as needed
       ) +
       ggplot2::geom_text(
         data = df_diff,
@@ -2179,7 +2179,7 @@ plot_ctr_population_type_perc <- function(
       x = "Number of People",
       caption = "Source: UNHCR.org/refugee-statistics"
     ) +
-    ggplot2::scale_y_discrete(labels = scales::label_wrap(45)) +
+    ggplot2::scale_y_discrete(labels = scales::label_wrap(25)) +
     ggplot2::scale_x_continuous(expand = ggplot2::expansion(c(0, 0.1))) +
     theme_unhcr(
       grid = FALSE,
