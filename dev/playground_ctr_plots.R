@@ -2408,7 +2408,6 @@ plot_ctr_population_type_per_year <- function(
     ggplot2::theme(
       legend.direction = "horizontal",
       legend.position = "bottom",
-      legend.text = ggplot2::element_text(size = ggplot2::rel(0.5)),
       legend.key.size = ggplot2::unit(0.8, "cm"),
       text = ggplot2::element_text(size = 20),
       axis.text.x = element_text(size = category_font_size),
