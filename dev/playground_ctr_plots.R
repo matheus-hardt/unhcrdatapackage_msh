@@ -2517,9 +2517,9 @@ plot_ctr_process <- function(
     dplyr::mutate(
       Decision.output = dplyr::case_when(
         Decision.output == "dec_recognized" ~ "Recognized",
-        Decision.output == "dec_other" ~ "ComplementaryProtection",
+        Decision.output == "dec_other" ~ "Complementary\nProtection",
         Decision.output == "dec_rejected" ~ "Rejected",
-        Decision.output == "dec_closed" ~ "OtherwiseClosed"
+        Decision.output == "dec_closed" ~ "Otherwise\nClosed"
       ),
       ProcedureName = dplyr::case_when(
         dec_level == "G" ~ "Government",
@@ -2571,9 +2571,9 @@ plot_ctr_process <- function(
       flow_table[["Decision output"]],
       levels = c(
         "Rejected",
-        "ComplementaryProtection",
+        "Complementary\nProtection",
         "Recognized",
-        "OtherwiseClosed"
+        "Otherwise\nClosed"
       )
     )
     ## plot your dataset
