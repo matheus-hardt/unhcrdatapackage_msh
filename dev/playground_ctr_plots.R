@@ -1308,7 +1308,8 @@ plot_ctr_origin_history <- function(
       x = "",
       y = "",
       caption = "Source: UNHCR.org/refugee-statistics"
-    )
+    ) +
+    ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 0, hjust = 0.5))
 
   return(p) # print(p)
 }
@@ -1847,7 +1848,11 @@ plot_ctr_population_type_abs <- function(
       ),
       subtitle = paste0("Top ", top_n_countries, " Countries of Origin"),
       x = "Number of People",
-      caption = "Source: UNHCR.org/refugee-statistics"
+      caption = paste(
+        "Source: UNHCR.org/refugee-statistics",
+        "If the percentage change is 0%, the change is not displayed",
+        sep = "\n"
+      )
     ) +
     ggplot2::scale_y_discrete(labels = scales::label_wrap(45)) +
     ggplot2::scale_x_continuous(expand = ggplot2::expansion(c(0, 0.1))) +
