@@ -1788,7 +1788,11 @@ plot_ctr_population_type_abs <- function(
           TRUE ~ "arrow-up"
         ),
         # Generate SVG
-        svg_icon = as.character(purrr::map2(icon_name, icon_color, ~ fontawesome::fa(.x, fill = .y)))
+        svg_icon = as.character(purrr::map2(
+          icon_name,
+          icon_color,
+          ~ fontawesome::fa(.x, fill = .y)
+        ))
       )
 
     # Calculate x-offsets for alignment
@@ -1804,10 +1808,11 @@ plot_ctr_population_type_abs <- function(
     # Define Nudge for Icon
     df_diff <- df_diff |>
       dplyr::mutate(
-        x_icon = value + dplyr::case_when(
-          pos_type == "far" ~ offset_base * 4, # Further out to clear main label
-          TRUE ~ offset_base * 1 # Just outside
-        ),
+        x_icon = value +
+          dplyr::case_when(
+            pos_type == "far" ~ offset_base * 4, # Further out to clear main label
+            TRUE ~ offset_base * 1 # Just outside
+          ),
         x_text = x_icon + offset_base * 2 # Text follows icon
       )
 
@@ -1848,11 +1853,7 @@ plot_ctr_population_type_abs <- function(
       ),
       subtitle = paste0("Top ", top_n_countries, " Countries of Origin"),
       x = "Number of People",
-      caption = paste(
-        "Source: UNHCR.org/refugee-statistics",
-        "If the percentage change is 0%, the change is not displayed",
-        sep = "\n"
-      )
+      caption = "Source: UNHCR.org/refugee-statistics. If the percentage change is 0%, the change is not displayed"
     ) +
     ggplot2::scale_y_discrete(labels = scales::label_wrap(45)) +
     ggplot2::scale_x_continuous(expand = ggplot2::expansion(c(0, 0.1))) +
