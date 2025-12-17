@@ -3173,10 +3173,7 @@ plot_ctr_pyramid <- function(
         scale_x_continuous(expand = expansion(c(0.2, 0.2))) +
         scale_fill_manual(
           breaks = c("Male", "Female"),
-          values = setNames(
-            unhcrthemes::unhcr_pal(n = 3, "pal_unhcr")[c(2, 1)],
-            c("Male", "Female")
-          )
+          values = c("Male" = "#999999", "Female" = "#0072BC")
         ) +
         labs(
           title = paste0(
