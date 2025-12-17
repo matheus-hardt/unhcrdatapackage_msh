@@ -3111,7 +3111,9 @@ plot_ctr_pyramid <- function(
             str_detect(Class, "60") ~ "60+",
             str_detect(Class, "unknown") ~ "Unknown"
           )
-        )
+        ) |>
+        # Filter out Unknown if count is 0
+        dplyr::filter(!(age == "Unknown" & Count == 0))
 
       pyramid3$pc <- pyramid3$Count / sum(pyramid3$Count)
       pyramid3$age <- factor(
@@ -3203,7 +3205,8 @@ plot_ctr_pyramid <- function(
           axis_text = "y"
         ) +
         theme(
-          legend.position = "none",
+          legend.position = "bottom",
+          legend.title = ggplot2::element_blank(),
           axis.text = element_text(size = category_font_size)
         )
     }
