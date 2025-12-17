@@ -1778,13 +1778,13 @@ plot_ctr_population_type_abs <- function(
         ),
         # Assign colors
         icon_color = dplyr::case_when(
-          direction == "negative" ~ "#0472bc",
-          TRUE ~ "grey" # positive
+          direction == "negative" ~ "#EF4A60", # Red
+          TRUE ~ "#589BE5" # Blue
         ),
         # Assign icons
         icon_name = dplyr::case_when(
-          direction == "negative" ~ "circle-arrow-down",
-          TRUE ~ "circle-arrow-up"
+          direction == "negative" ~ "arrow-down",
+          TRUE ~ "arrow-up"
         ),
         # Generate SVG
         svg_icon = as.character(purrr::map2(icon_name, icon_color, ~ fontawesome::fa(.x, fill = .y)))
