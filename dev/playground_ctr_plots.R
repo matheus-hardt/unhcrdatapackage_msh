@@ -2099,73 +2099,86 @@ plot_ctr_population_type_perc <- function(
     )
 
   # Add diff labels
+  # Add diff labels
   if (show_diff_label == TRUE) {
-    # diff label positive general
+    # Prepare data for diff labels
+    df_diff <- df |>
+      dplyr::filter(
+        !is.na(diff_pop_type_value),
+        diff_pop_type_value != "",
+        diff_pop_type_value != "0.0%"
+      ) |>
+      dplyr::mutate(
+        # Determine change direction
+        direction = dplyr::case_when(
+          grepl("-", diff_pop_type_value) ~ "negative",
+          TRUE ~ "positive"
+        ),
+        # Determine position type (near bar end vs further out)
+        # Matches strict logic from previous geom_text subsets
+        pos_type = dplyr::case_when(
+          value < max(value) / 1.5 ~ "far",
+          TRUE ~ "near"
+        ),
+        # Assign colors
+        icon_color = dplyr::case_when(
+          direction == "negative" ~ "#EF4A60", # Red
+          TRUE ~ "#589BE5" # Blue
+        ),
+        # Assign icons
+        icon_name = dplyr::case_when(
+          direction == "negative" ~ "arrow-down",
+          TRUE ~ "arrow-up"
+        ),
+        # Generate SVG
+        svg_icon = as.character(purrr::map2(
+          icon_name,
+          icon_color,
+          ~ fontawesome::fa(.x, fill = .y)
+        ))
+      )
+
+    # Calculate x-offsets for alignment
+    # Main label is at hjust -0.1 (far) or 1.1 (near/inside)
+    # We need to position diff labels to the right of the bar tip
+    # For 'far': main label is outside, so diff label needs to be further right
+    # For 'near': main label is inside, so diff label can be just outside
+
+    # We using offsets relative to max value to simulate 'lines of text' spacing
+    max_val <- max(df$value, na.rm = TRUE)
+    offset_base <- max_val * 0.02 # Base spacing unit
+
+    # Define Nudge for Icon
+    df_diff <- df_diff |>
+      dplyr::mutate(
+        x_icon = value +
+          dplyr::case_when(
+            pos_type == "far" ~ offset_base * 4, # Further out to clear main label
+            TRUE ~ offset_base * 1 # Just outside
+          ),
+        x_text = x_icon + offset_base * 2 # Text follows icon
+      )
+
     p <- p +
-      geom_text(
-        data = subset(
-          df,
-          with(df, grepl("^[0-9]", diff_pop_type_value)) &
-            (value < max(value) / 1.5)
-        ),
-        aes(
-          x = value,
+      ggsvg::geom_point_svg(
+        data = df_diff,
+        ggplot2::aes(
+          x = x_icon,
           y = origin_data_prot,
-          label = paste(intToUtf8(9650), diff_pop_type_value)
+          svg = svg_icon
         ),
-        hjust = -1.2,
-        vjust = 0.5,
-        colour = "grey",
-        size = label_font_size
+        size = 8.5 # Adjust size as needed
       ) +
-      # diff label negative general
-      geom_text(
-        data = subset(
-          df,
-          with(df, grepl("-", diff_pop_type_value)) & (value < max(value) / 1.5)
-        ),
-        aes(
-          x = value,
+      ggplot2::geom_text(
+        data = df_diff,
+        ggplot2::aes(
+          x = x_text,
           y = origin_data_prot,
-          label = paste(intToUtf8(9660), diff_pop_type_value)
+          label = diff_pop_type_value,
+          colour = I(icon_color)
         ),
-        hjust = -1.2,
+        hjust = 0, # Left align text starting from x_text
         vjust = 0.5,
-        colour = "#0472bc",
-        size = label_font_size
-      ) +
-      # diff label positive max
-      geom_text(
-        data = subset(
-          df,
-          with(df, grepl("^[0-9]", diff_pop_type_value)) &
-            (value >= max(value) / 1.5)
-        ),
-        aes(
-          x = value,
-          y = origin_data_prot,
-          label = paste(intToUtf8(9650), diff_pop_type_value)
-        ),
-        hjust = -0.4,
-        vjust = 0.5,
-        colour = "grey",
-        size = label_font_size
-      ) +
-      # diff label negative max
-      geom_text(
-        data = subset(
-          df,
-          with(df, grepl("-", diff_pop_type_value)) &
-            (value >= max(value) / 1.5)
-        ),
-        aes(
-          x = value,
-          y = origin_data_prot,
-          label = paste(intToUtf8(9660), diff_pop_type_value)
-        ),
-        hjust = -0.4,
-        vjust = 0.5,
-        colour = "#0472bc",
         size = label_font_size
       )
   }
@@ -2183,9 +2196,9 @@ plot_ctr_population_type_perc <- function(
       ),
       subtitle = paste0("Top ", top_n_countries, " Countries of Origin"),
       x = "Number of People",
-      caption = "Source: UNHCR.org/refugee-statistics"
+      caption = "Source: UNHCR.org/refugee-statistics. If the percentage change is 0%, the change is not displayed"
     ) +
-    ggplot2::scale_y_discrete(labels = scales::label_wrap(25)) +
+    ggplot2::scale_y_discrete(labels = scales::label_wrap(45)) +
     ggplot2::scale_x_continuous(expand = ggplot2::expansion(c(0, 0.1))) +
     theme_unhcr(
       grid = FALSE,
@@ -2672,6 +2685,7 @@ plot_ctr_process <- function(
 #' @param country_origin_iso3c Character value with the ISO-3 character code of the Country of Asylum - if NUL then all countries are included
 #'
 #' @param procedureType indicates whether "G" (Government) "J" (Joint) "U" (UNHCR)
+#' @param lag Numeric value for the time window to display, default to 10 years
 #' @param label_font_size Numeric value for label font size, default to 4
 #' @param category_font_size Numeric value for axis text font size, default to 10
 #' @param legend_font_size Numeric value for legend font size, default to 10
@@ -2728,6 +2742,7 @@ plot_ctr_processing_time <- function(
   country_asylum_iso3c = country_asylum_iso3,
   country_origin_iso3c = NULL,
   procedureType = NULL,
+  lag = 10,
   label_font_size = 4,
   category_font_size = 10,
   legend_font_size = 10
@@ -2760,7 +2775,10 @@ plot_ctr_processing_time <- function(
   )
 
   apps <- refugees::asylum_applications |>
-    dplyr::filter(coa_iso == country_asylum_iso3c)
+    dplyr::filter(
+      coa_iso == country_asylum_iso3c,
+      year >= (!!year - lag)
+    )
 
   if (!is.null(country_origin_iso3c)) {
     apps <- apps |> dplyr::filter(coo_iso == country_origin_iso3c)
@@ -2774,7 +2792,10 @@ plot_ctr_processing_time <- function(
     dplyr::ungroup()
 
   decs <- refugees::asylum_decisions |>
-    dplyr::filter(coa_iso == country_asylum_iso3c)
+    dplyr::filter(
+      coa_iso == country_asylum_iso3c,
+      year >= (!!year - lag)
+    )
 
   if (!is.null(country_origin_iso3c)) {
     decs <- decs |> dplyr::filter(coo_iso == country_origin_iso3c)
