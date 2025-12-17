@@ -1045,7 +1045,6 @@ plot_ctr_location <- function(
     dplyr::filter(iso_a3 != "ATA") |> # Exclude Antarctica for better view
     sf::st_make_valid()
 
-
   # Join Data to Map
   map_data <- world_sf |>
     dplyr::left_join(data, by = c("iso_a3" = "coa_iso"))
@@ -1433,7 +1432,9 @@ plot_ctr_origin_recognition <- function(
     dplyr::arrange(dplyr::desc(order_by)) |>
     head(top_n_countries) |>
     dplyr::mutate(
-      measuredRound = scales::label_percent(accuracy = 0.1, suffix = "%")(measured)
+      measuredRound = scales::label_percent(accuracy = 0.1, suffix = "%")(
+        measured
+      )
     )
 
   rsdAsylum <- ggplot2::ggplot() +
@@ -1499,7 +1500,7 @@ plot_ctr_origin_recognition <- function(
       y = "",
       caption = "Source: UNHCR.org/refugee-statistics "
     ) +
-    ggplot2::scale_x_discrete(labels = scales::label_wrap(45)) +
+    ggplot2::scale_x_discrete(labels = scales::label_wrap(25)) +
     unhcrthemes::theme_unhcr(
       font_size = 14,
       grid = FALSE,
@@ -1842,8 +1843,8 @@ plot_ctr_population_type_abs <- function(
       x = "Number of People",
       caption = "Source: UNHCR.org/refugee-statistics"
     ) +
-    ggplot2::scale_x_discrete(labels = scales::label_wrap(45)) +
-    ggplot2::scale_y_continuous(expand = ggplot2::expansion(c(0, 0.1))) +
+    ggplot2::scale_y_discrete(labels = scales::label_wrap(45)) +
+    ggplot2::scale_x_continuous(expand = ggplot2::expansion(c(0, 0.1))) +
     unhcrthemes::theme_unhcr(
       grid = FALSE,
       axis = "y",
@@ -2550,13 +2551,21 @@ plot_ctr_process <- function(
       theme_void()
   } else {
     ## summarize data
-    flow_table <- links |>
-      ggforce::gather_set_data(
-        x = c("CountryOriginName", "ProcedureName", "Decision.output")
+    # Rename columns for better display
+    links_renamed <- links |>
+      dplyr::rename(
+        `Country of Origin` = CountryOriginName,
+        `Procedure` = ProcedureName,
+        `Decision output` = Decision.output
       )
 
-    flow_table$Decision.output <- factor(
-      flow_table$Decision.output,
+    flow_table <- links_renamed |>
+      ggforce::gather_set_data(
+        x = c("Country of Origin", "Procedure", "Decision output")
+      )
+
+    flow_table[["Decision output"]] <- factor(
+      flow_table[["Decision output"]],
       levels = c(
         "Rejected",
         "ComplementaryProtection",
@@ -2575,7 +2584,7 @@ plot_ctr_process <- function(
     ) +
       ## colour lines by sex
       ggforce::geom_parallel_sets(
-        aes(fill = Decision.output),
+        aes(fill = `Decision output`),
         alpha = 0.5,
         axis.width = 0.2
       ) +
@@ -2593,7 +2602,7 @@ plot_ctr_process <- function(
       ) +
       ## adjusted y and x axes (probably needs more vertical space)
       scale_x_discrete(
-        labels = scales::label_wrap(45),
+        labels = scales::label_wrap(25),
         name = NULL,
         expand = c(0, 0.2)
       ) +
@@ -3955,35 +3964,35 @@ run_test(
 )
 #
 # # 9. Pop Type Abs
-# run_test(
-#   plot_ctr_population_type_abs,
-#   "plot_ctr_population_type_abs",
-#   year = year,
-#   country_asylum_iso3c = country_asylum_iso3c,
-#   label_font_size = 4,
-#   category_font_size = 10
-# )
+run_test(
+  plot_ctr_population_type_abs,
+  "plot_ctr_population_type_abs",
+  year = year,
+  country_asylum_iso3c = country_asylum_iso3c,
+  label_font_size = 4,
+  category_font_size = 10
+)
 
 # 10. Pop Type Per Year
-# run_test(
-#   plot_ctr_population_type_per_year,
-#   "plot_ctr_population_type_per_year",
-#   year = year,
-#   country_asylum_iso3c = country_asylum_iso3c,
-#   label_font_size = 4,
-#   category_font_size = 10,
-#   legend_font_size = 10
-# )
-#
-# # 11. Pop Type Perc
-# run_test(
-#   plot_ctr_population_type_perc,
-#   "plot_ctr_population_type_perc",
-#   year = year,
-#   country_asylum_iso3c = country_asylum_iso3c,
-#   label_font_size = 4,
-#   category_font_size = 10
-# )
+run_test(
+  plot_ctr_population_type_per_year,
+  "plot_ctr_population_type_per_year",
+  year = year,
+  country_asylum_iso3c = country_asylum_iso3c,
+  label_font_size = 4,
+  category_font_size = 10,
+  legend_font_size = 10
+)
+
+# 11. Pop Type Perc
+run_test(
+  plot_ctr_population_type_perc,
+  "plot_ctr_population_type_perc",
+  year = year,
+  country_asylum_iso3c = country_asylum_iso3c,
+  label_font_size = 4,
+  category_font_size = 10
+)
 
 # 12. Process
 run_test(
