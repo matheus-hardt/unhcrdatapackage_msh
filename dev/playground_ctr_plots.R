@@ -2557,6 +2557,9 @@ plot_ctr_process <- function(
         `Country of Origin` = CountryOriginName,
         `Procedure` = ProcedureName,
         `Decision output` = Decision.output
+      ) |>
+      dplyr::mutate(
+        `Country of Origin` = stringr::str_wrap(`Country of Origin`, width = 20)
       )
 
     flow_table <- links_renamed |>
