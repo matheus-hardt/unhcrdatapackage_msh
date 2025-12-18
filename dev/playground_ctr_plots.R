@@ -3428,8 +3428,9 @@ plot_ctr_recognition <- function(
 #' @param country_asylum_iso3c Character value with the ISO-3 character code of the Country of Asylum
 #' @param sol_type Vector of character values. Possible population type (e.g.:"NAT" "RST" "RET" "RDP")
 #'
-#' @param label_font_size Numeric value for label font size, default to 4
 #' @param category_font_size Numeric value for axis text font size, default to 10
+#' @param facet_title_size Numeric value for facet title font size, default to 12
+#' @param y_axis_text_size Numeric value for y axis text font size, default to 10
 #'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
@@ -3456,16 +3457,18 @@ plot_ctr_recognition <- function(
 #'   country_asylum_iso3c = "UGA",
 #'   lag = 10,
 #'   sol_type = c("NAT", "RST", "RET", "RDP"),
-#'   label_font_size = 4,
-#'   category_font_size = 10
+#'   category_font_size = 10,
+#'   facet_title_size = 12,
+#'   y_axis_text_size = 10
 #' )
 plot_ctr_solution <- function(
   year = 2024,
   lag = 10,
   country_asylum_iso3c = country_asylum_iso3c,
   sol_type,
-  label_font_size = 4,
-  category_font_size = 10
+  category_font_size = 10,
+  facet_title_size = 12,
+  y_axis_text_size = 10
 ) {
   country_name_text <- refugees::population |>
     dplyr::filter(coa_iso == country_asylum_iso3c) |>
@@ -3474,7 +3477,7 @@ plot_ctr_solution <- function(
     head(1)
 
   Solution <- refugees::solutions |>
-    dplyr::filter(coa_iso == country_asylum_iso3c & year > (year - lag)) |>
+    dplyr::filter(coa_iso == country_asylum_iso3c & year >= (!!year - lag)) |>
     tidyr::pivot_longer(
       cols = c(naturalisation, resettlement, returned_refugees, returned_idps),
       names_to = "Solution.type",
@@ -3540,7 +3543,7 @@ plot_ctr_solution <- function(
         stringr::str_wrap("text", 80),
         x = 1,
         y = 1,
-        size = label_font_size,
+        size = 4,
         label = info
       ) +
       theme_void()
@@ -3574,7 +3577,9 @@ plot_ctr_solution <- function(
         panel.grid.major.y = element_line(color = "#cbcbcb"),
         panel.grid.major.x = element_blank(),
         panel.grid.minor = element_blank(),
-        axis.text.x = element_text(size = category_font_size)
+        axis.text.x = element_text(size = category_font_size),
+        axis.text.y = element_text(size = y_axis_text_size),
+        strip.text = element_text(size = facet_title_size)
       ) + ### changing grid line that should appear
       ## and the chart labels
       labs(
@@ -3624,13 +3629,13 @@ plot_ctr_solution <- function(
 #' plot_ctr_solution_recognition(
 #'   year = 2024,
 #'   country_asylum_iso3c = "UGA",
-#'   lag = 10
+#'   lag = 10,
+#'   category_font_size = 10
 #' )
 plot_ctr_solution_recognition <- function(
   year = 2024,
   lag = 10,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 4,
   category_font_size = 10
 ) {
   ctrylabel <- refugees::population |>
@@ -3641,7 +3646,7 @@ plot_ctr_solution_recognition <- function(
 
   new_refugee_recognitions_and_refugee_like_increases <-
     refugees::asylum_decisions |>
-    dplyr::filter(coa_iso == country_asylum_iso3c & year > (year - lag)) |>
+    dplyr::filter(coa_iso == country_asylum_iso3c & year >= (!!year - lag)) |>
     dplyr::mutate(Year = as.factor(year)) |>
     dplyr::group_by(Year, coa_iso) |>
     dplyr::summarize(
@@ -3654,7 +3659,7 @@ plot_ctr_solution_recognition <- function(
 
   refugee_solutions_naturalisation_resettlement_and_returns <-
     refugees::solutions |>
-    dplyr::filter(coa_iso == country_asylum_iso3c & year > (year - lag)) |>
+    dplyr::filter(coa_iso == country_asylum_iso3c & year >= (!!year - lag)) |>
     tidyr::pivot_longer(
       cols = c(naturalisation, resettlement, returned_refugees),
       names_to = "Solution.type",
@@ -3690,7 +3695,7 @@ plot_ctr_solution_recognition <- function(
         stringr::str_wrap("text", 80),
         x = 1,
         y = 1,
-        size = label_font_size,
+        size = 4,
         label = info
       ) +
       theme_void()
@@ -3747,7 +3752,9 @@ plot_ctr_solution_recognition <- function(
       ) +
       theme(
         ## used to display part of the title in different colors
-        plot.title = ggtext::element_markdown()
+        ## used to display part of the title in different colors
+        plot.title = ggtext::element_markdown(),
+        axis.text = element_text(size = category_font_size)
       )
   }
 
@@ -3764,7 +3771,7 @@ plot_ctr_solution_recognition <- function(
 #' @param year Numeric value of the year (for instance 2020)
 #' @param country_asylum_iso3c Character value with the ISO-3 character code of the Country of Asylum
 #' @param label_font_size Numeric value for label font size, default to 12
-#' @param category_font_size Numeric value for axis text font size, default to 14
+#'
 #'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
@@ -3790,14 +3797,12 @@ plot_ctr_solution_recognition <- function(
 #' plot_ctr_treemap(
 #'   year = 2024,
 #'   country_asylum_iso3c = "USA",
-#'   label_font_size = 12,
-#'   category_font_size = 14
+#'   label_font_size = 12
 #' )
 plot_ctr_treemap <- function(
   year = 2024,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 12,
-  category_font_size = 14
+  label_font_size = 12
 ) {
   dict_pop_type_name <- c(
     "refugees" = "Refugees",
@@ -4090,7 +4095,6 @@ run_test(
   "plot_ctr_solution",
   year = year,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 4,
   category_font_size = 10
 )
 
@@ -4100,7 +4104,6 @@ run_test(
   "plot_ctr_solution_recognition",
   year = year,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 4,
   category_font_size = 10
 )
 
@@ -4110,8 +4113,7 @@ run_test(
   "plot_ctr_treemap",
   year = year,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 12,
-  category_font_size = 14
+  label_font_size = 12
 )
 
 print("Done.")
