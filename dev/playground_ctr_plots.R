@@ -901,7 +901,7 @@ plot_ctr_keyfig <- function(
     ggplot2::geom_text(
       ggplot2::aes(
         x = 0.5,
-        y = 0.6,
+        y = 0.4,
         label = population_type_label,
         color = population_type_label
       ),
@@ -1857,7 +1857,7 @@ plot_ctr_population_type_abs <- function(
           y = origin_data_prot,
           svg = svg_icon
         ),
-        size = 8.5 # Adjust size as needed
+        size = 6.8 # Adjust size as needed
       ) +
       ggplot2::geom_text(
         data = df_diff,
