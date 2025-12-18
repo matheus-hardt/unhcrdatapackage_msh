@@ -1061,6 +1061,7 @@ plot_ctr_location <- function(
     returnclass = "sf"
   ) |>
     dplyr::filter(iso_a3 != "ATA") |> # Exclude Antarctica for better view
+    sf::st_wrap_dateline(options = c("WRAPDATELINE=YES")) |>
     sf::st_make_valid()
 
   # Join Data to Map
