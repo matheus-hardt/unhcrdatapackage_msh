@@ -28,7 +28,6 @@ message("Loading customized functions...")
 #' @param year Numeric value of the year (for instance 2020)
 #' @param country_asylum_iso3c Character value with the ISO-3 character code of the Country of Asylum
 #' @param lag Number of year to used as comparison base
-#' @param label_font_size Numeric value for label font size, default to 4
 #' @param category_font_size Numeric value for axis text font size, default to 10
 #' @param legend_font_size Numeric value for legend font size, default to 10
 #' @importFrom ggplot2 ggplot aes coord_flip element_blank element_line
@@ -51,7 +50,6 @@ message("Loading customized functions...")
 #'   year = 2024,
 #'   country_asylum_iso3c = "ECU",
 #'   lag = 10,
-#'   label_font_size = 4,
 #'   category_font_size = 10,
 #'   legend_font_size = 10
 #' )
@@ -59,7 +57,6 @@ plot_ctr_asylum <- function(
   year = 2024,
   country_asylum_iso3c,
   lag = 10,
-  label_font_size = 4,
   category_font_size = 10,
   legend_font_size = 10
 ) {
@@ -3941,7 +3938,7 @@ run_test(
   "plot_ctr_asylum",
   year = year,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 4,
+
   lag = 5,
   category_font_size = 15,
   legend_font_size = 12
