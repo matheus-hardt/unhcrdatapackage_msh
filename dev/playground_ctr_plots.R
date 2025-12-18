@@ -860,8 +860,8 @@ plot_ctr_keyfig <- function(
       pop_size_label = format(round(value, 0), big.mark = ","),
       # Use specific color if available, else gray
       color_hex = ifelse(
-        population_type_label %in% names(cols),
-        cols[population_type_label],
+        as.character(population_type_label) %in% names(cols),
+        cols[as.character(population_type_label)],
         "#333333"
       ),
       # Map icon name, fallback to circle-question
