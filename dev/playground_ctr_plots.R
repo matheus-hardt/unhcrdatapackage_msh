@@ -776,15 +776,24 @@ plot_ctr_keyfig <- function(
   perc_change_poc <- (total_poc - total_poc_prev) / total_poc_prev * 100
 
   # Define specific colors
+  # Define specific colors
+  # Pal unhcr_poc
+  # Ref: #0072BC
+  # Asy: #6CD8FD
+  # IDP: #32C189
+  # Sta: #FFC740
+  # OIP: #D25A45
+  # OOC: #A097E3
+  # Hst: #BFBFBF
   cols <- c(
+    "Refugees" = "#0072BC",
+    "Asylum-seekers" = "#6CD8FD",
     "Internally displaced\npersons" = "#32C189",
     "Other people in need\nof international protection" = "#D25A45",
-    "Asylum-seekers" = "#6CD8FD",
-    "Refugees" = "#0072BC",
-    "Others of concern\nto UNHCR" = "#bfbfbf",
     "Stateless people" = "#FFC740",
-    "Host community" = "#000000",
-    "Other" = "#000000"
+    "Others of concern\nto UNHCR" = "#A097E3",
+    "Host community" = "#BFBFBF",
+    "Other" = "#BFBFBF"
   )
 
   # Define icon mapping
@@ -822,6 +831,18 @@ plot_ctr_keyfig <- function(
         population_type == "ooc" ~ "Others of concern\nto UNHCR",
         population_type == "hst" ~ "Host community",
         TRUE ~ "Other"
+      ),
+      population_type_label = factor(
+        population_type_label,
+        levels = c(
+          "Refugees",
+          "Asylum-seekers",
+          "Internally displaced\npersons",
+          "Other people in need\nof international protection",
+          "Host community",
+          "Others of concern\nto UNHCR",
+          "Stateless people"
+        )
       )
     ) |>
     dplyr::filter(value > 0) |>
@@ -872,7 +893,7 @@ plot_ctr_keyfig <- function(
       size = label_font_size,
       fontface = "bold"
     ) +
-    unhcrthemes::scale_colour_unhcr_d(palette = "pal_unhcr_poc") +
+    ggplot2::scale_color_manual(values = cols) +
     ggplot2::xlim(c(0, 1)) +
     ggplot2::ylim(c(0, 3)) +
     ggplot2::facet_wrap(ggplot2::vars(population_type_label), ncol = 2) +
