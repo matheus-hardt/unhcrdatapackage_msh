@@ -3324,6 +3324,7 @@ plot_ctr_recognition <- function(
 
   topOrigin1 <- topOrigin |>
     mutate(measured = .data[[measure]]) |>
+    dplyr::filter(measured > 0) |>
     mutate(order_by = .data[[order_by]]) |>
     arrange(desc(order_by)) |>
     head(top_n_countries) |>
@@ -3395,14 +3396,15 @@ plot_ctr_recognition <- function(
       y = " "
     ) +
     theme_unhcr(
-      grid = "Y",
-      axis = "x",
+      grid = FALSE,
+      axis = "y",
       axis_title = "",
       font_size = 14
     ) +
     theme(
-      panel.grid.major.x = element_line(color = "#cbcbcb"),
+      panel.grid.major.x = element_blank(),
       panel.grid.major.y = element_blank(),
+      axis.text.x = element_blank(),
       axis.text.y = element_text(size = category_font_size)
     )
 
