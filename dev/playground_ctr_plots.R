@@ -875,7 +875,7 @@ plot_ctr_keyfig <- function(
       size = label_font_size,
       fontface = "bold"
     ) +
-    ggplot2::scale_color_manual(values = cols) +
+    unhcrthemes::scale_colour_unhcr_d(palette = "pal_unhcr_poc") +
     ggplot2::xlim(c(0, 1)) +
     ggplot2::ylim(c(0, 3)) +
     ggplot2::facet_wrap(ggplot2::vars(population_type_label), ncol = 2) +
@@ -1068,10 +1068,8 @@ plot_ctr_location <- function(
       crs = "+proj=robin",
       datum = NA
     ) +
-    ggplot2::scale_fill_gradient(
-      low = "#DCE9FF", # Lightest UNHCR Blue
-      high = "#0072BC", # UNHCR Blue
-      na.value = "#F0F0F0", # Light grey for no data
+    unhcrthemes::scale_fill_unhcr_c(
+      palette = "pal_blue",
       name = "Population",
       labels = scales::label_comma()
     ) +
@@ -2297,15 +2295,6 @@ plot_ctr_population_type_per_year <- function(
     "hst" = "HST"
   )
 
-  cols_poptype <- c(
-    "Asylum-seekers" = "#18375F",
-    "Refugees" = "#0072BC",
-    # "Venezuelans Displaced Abroad" = "#EF4A60",
-    "Other people in need of international protection" = "#EF4A60",
-    "Others of Concern to UNHCR" = "#999999",
-    "Internally displaced persons" = "#00B398",
-    "Stateless Persons" = "#E1CC0D"
-  )
 
   df <- refugees::population |>
     dplyr::filter(
@@ -2408,8 +2397,8 @@ plot_ctr_population_type_per_year <- function(
         "#FFFFFF"
       )
     ) +
-    ggplot2::scale_fill_manual(
-      values = cols_poptype,
+    unhcrthemes::scale_fill_unhcr_d(
+      palette = "pal_unhcr_poc",
       drop = TRUE,
       limits = force,
       labels = scales::label_wrap(20)
@@ -3705,8 +3694,8 @@ plot_ctr_solution_recognition <- function(
         limits = c(0, NA),
         expand = expansion(c(0, 0.02))
       ) +
-      scale_color_manual(values = c("#0072bc", "#00B398")) +
-      scale_fill_manual(values = c("#0072bc", "#00B398")) +
+      unhcrthemes::scale_color_unhcr_d(palette = "pal_unhcr") +
+      unhcrthemes::scale_fill_unhcr_d(palette = "pal_unhcr") +
       labs(
         title = stringr::str_wrap(
           "How do <span style='color:#0072bc;'>refugee recognitions<sup>a</sup></span> compare with available <span style='color:#00B398;'>solutions<sup>b</sup></span>?",
@@ -3838,17 +3827,7 @@ plot_ctr_treemap <- function(
       place = "centre",
       size = label_font_size
     ) +
-    ggplot2::scale_fill_manual(
-      values = c(
-        "idps" = "#32C189",
-        # "VDA"="#EF4A60",
-        "oip" = "#D25A45",
-        "asylum_seekers" = "#6CD8FD",
-        "refugees" = "#0072BC",
-        "ooc" = "#bfbfbf",
-        "stateless" = "#FFC740"
-      )
-    ) +
+    unhcrthemes::scale_fill_unhcr_d(palette = "pal_unhcr_poc") +
     unhcrthemes::theme_unhcr(
       font_size = 14,
       grid = "Y",
