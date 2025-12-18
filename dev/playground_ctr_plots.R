@@ -3326,22 +3326,57 @@ plot_ctr_recognition <- function(
     mutate(measured = .data[[measure]]) |>
     mutate(order_by = .data[[order_by]]) |>
     arrange(desc(order_by)) |>
-    head(top_n_countries)
+    head(top_n_countries) |>
+    dplyr::mutate(
+      measuredRound = scales::label_percent(accuracy = 0.1, suffix = "%")(
+        measured
+      )
+    )
 
-  rsdorigin <- ggplot() +
-    geom_bar(
+  rsdorigin <- ggplot2::ggplot() +
+    ggplot2::geom_col(
       data = topOrigin1,
-      aes(
+      ggplot2::aes(
         y = measured,
-        x = reorder(CountryOriginName, measured)
+        x = stats::reorder(CountryOriginName, measured)
       ),
-      stat = "identity",
-      fill = "#0072bc"
+      fill = unhcrthemes::unhcr_pal(n = 1, "pal_blue")
+    ) +
+    ## Position label differently in the bar in white - outside bar in black
+    ggplot2::geom_text(
+      data = subset(
+        topOrigin1,
+        measured < max(measured) / 1.5
+      ),
+      ggplot2::aes(
+        y = measured,
+        x = stats::reorder(CountryOriginName, measured),
+        label = measuredRound
+      ),
+      hjust = -0.1,
+      vjust = 0.5,
+      colour = "black",
+      size = label_font_size
+    ) +
+    ggplot2::geom_text(
+      data = subset(
+        topOrigin1,
+        measured >= max(measured) / 1.5
+      ),
+      ggplot2::aes(
+        y = measured,
+        x = stats::reorder(CountryOriginName, measured),
+        label = measuredRound
+      ),
+      hjust = 1.1,
+      vjust = 0.5,
+      colour = "white",
+      size = label_font_size
     ) +
     ggplot2::scale_x_discrete(labels = scales::label_wrap(45)) +
-    coord_flip() +
-    # scale_y_continuous( labels = scales::label_number(accuracy = 1,   scale_cut = cut_short_scale())) + ## Format axis number
-    scale_y_continuous(
+    ggplot2::coord_flip() +
+    ggplot2::scale_y_continuous(
+      expand = ggplot2::expansion(c(0, 0.1)),
       labels = scales::label_percent(accuracy = 0.1, suffix = "%")
     ) +
 
@@ -3366,12 +3401,10 @@ plot_ctr_recognition <- function(
       font_size = 14
     ) +
     theme(
-      # axis.text.x = element_blank(),
-      # legend.position = "none",
       panel.grid.major.x = element_line(color = "#cbcbcb"),
       panel.grid.major.y = element_blank(),
       axis.text.y = element_text(size = category_font_size)
-    ) ### changing grid line that should appear)
+    )
 
   return(rsdorigin)
 }
