@@ -706,6 +706,7 @@ plot_ctr_diff_in_pop_groups <- function(
 #'   https://fontawesome.com/icons/categories/humanitarian
 #' @param year Numeric value of the year (for instance 2020)
 #' @param country_asylum_iso3c Character value with the ISO-3 character code of the Country of Asylum
+#' @param label_font_size Numeric value for label font size, default to 4
 #' @return ggplot2
 #'
 #' @importFrom dplyr desc select case_when lag mutate group_by filter summarise ungroup
@@ -723,8 +724,7 @@ plot_ctr_diff_in_pop_groups <- function(
 plot_ctr_keyfig <- function(
   year = 2024,
   country_asylum_iso3c,
-  label_font_size = 4,
-  category_font_size = 10
+  label_font_size = 4
 ) {
   # Get country name
   country_name_text <- refugees::population |>
@@ -3980,8 +3980,7 @@ run_test(
   "plot_ctr_keyfig",
   year = year,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 4,
-  category_font_size = 10
+  label_font_size = 4
 )
 
 # 6. Location
