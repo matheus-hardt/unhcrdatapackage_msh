@@ -706,7 +706,9 @@ plot_ctr_diff_in_pop_groups <- function(
 #'   https://fontawesome.com/icons/categories/humanitarian
 #' @param year Numeric value of the year (for instance 2020)
 #' @param country_asylum_iso3c Character value with the ISO-3 character code of the Country of Asylum
-#' @param label_font_size Numeric value for label font size, default to 4
+#' @param population_type_font_size Numeric value for population type font size, default to 4
+#' @param population_size_font_size Numeric value for population size number font size, default to 5
+#' @param icon_size Numeric value for icon size, default to 5
 #' @return ggplot2
 #'
 #' @importFrom dplyr desc select case_when lag mutate group_by filter summarise ungroup
@@ -724,7 +726,9 @@ plot_ctr_diff_in_pop_groups <- function(
 plot_ctr_keyfig <- function(
   year = 2024,
   country_asylum_iso3c,
-  label_font_size = 4
+  population_type_font_size = 4,
+  population_size_font_size = 5,
+  icon_size = 5
 ) {
   # Get country name
   country_name_text <- refugees::population |>
@@ -853,6 +857,7 @@ plot_ctr_keyfig <- function(
         " ",
         population_type_label
       ),
+      pop_size_label = format(round(value, 0), big.mark = ","),
       # Use specific color if available, else gray
       color_hex = ifelse(
         population_type_label %in% names(cols),
@@ -879,18 +884,29 @@ plot_ctr_keyfig <- function(
         y = 1.8,
         svg = svg_text
       ),
-      size = 10
+      size = icon_size
     ) +
     # LAYER 2: LABELS
     ggplot2::geom_text(
       ggplot2::aes(
         x = 0.5,
-        y = 0.8,
-        label = label,
+        y = 1.1,
+        label = pop_size_label,
         color = population_type_label
       ),
       family = "Lato",
-      size = label_font_size,
+      size = population_size_font_size,
+      fontface = "bold"
+    ) +
+    ggplot2::geom_text(
+      ggplot2::aes(
+        x = 0.5,
+        y = 0.6,
+        label = population_type_label,
+        color = population_type_label
+      ),
+      family = "Lato",
+      size = population_type_font_size,
       fontface = "bold"
     ) +
     ggplot2::scale_color_manual(values = cols) +
@@ -4002,7 +4018,9 @@ run_test(
   "plot_ctr_keyfig",
   year = year,
   country_asylum_iso3c = country_asylum_iso3c,
-  label_font_size = 4
+  population_type_font_size = 4,
+  population_size_font_size = 5,
+  icon_size = 5
 )
 
 # 6. Location
