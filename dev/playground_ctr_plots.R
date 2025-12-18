@@ -3702,11 +3702,12 @@ plot_ctr_solution_recognition <- function(
   } else {
     df_long <- df_raw |>
       dplyr::rename(
-        new = new_refugee_recognitions_and_refugee_like_increases,
-        sol = refugee_solutions_naturalisation_resettlement_and_returns
+
+        Recognitions = new_refugee_recognitions_and_refugee_like_increases,
+        Solutions = refugee_solutions_naturalisation_resettlement_and_returns
       ) |>
       dplyr::mutate(year = lubridate::ymd(Year, truncated = 2L)) |>
-      tidyr::pivot_longer(cols = new:sol)
+      tidyr::pivot_longer(cols = Recognitions:Solutions)
 
     df_wide <-
       tidyr::pivot_wider(df_long, names_from = name, values_from = value)
@@ -3717,9 +3718,9 @@ plot_ctr_solution_recognition <- function(
         data = df_wide,
         aes(
           x = year,
-          ymin = pmin(new, sol),
-          ymax = pmax(new, sol),
-          fill = new < sol
+          ymin = pmin(Recognitions, Solutions),
+          ymax = pmax(Recognitions, Solutions),
+          fill = Recognitions < Solutions
         ),
         alpha = 0.3
       ) +
@@ -3746,10 +3747,11 @@ plot_ctr_solution_recognition <- function(
       ) +
       unhcrthemes::theme_unhcr(
         font_size = 14,
-        legend = FALSE,
+        legend = TRUE,
         axis_title = FALSE,
         grid = "Yy"
       ) +
+      guides(fill = "none", color = guide_legend(title = NULL)) +
       theme(
         ## used to display part of the title in different colors
         ## used to display part of the title in different colors
