@@ -2094,10 +2094,10 @@ plot_ctr_destination <- function(year = 2024,
     dplyr::filter(Population.type %in% as.vector(pop_type)) |>
     dplyr::rename(CountryAsylumName = coa_name) |>
     dplyr::mutate(
-      CountryAsylumName = str_replace(CountryAsylumName, " \\(Bolivarian Republic of\\)", ""),
-      CountryAsylumName = str_replace(CountryAsylumName, "Iran \\(Islamic Republic of\\)", "Iran"),
-      CountryAsylumName = str_replace(CountryAsylumName, "United States of America", "USA"),
-      CountryAsylumName = str_replace(
+      CountryAsylumName = stringr::str_replace(CountryAsylumName, " \\(Bolivarian Republic of\\)", ""),
+      CountryAsylumName = stringr::str_replace(CountryAsylumName, "Iran \\(Islamic Republic of\\)", "Iran"),
+      CountryAsylumName = stringr::str_replace(CountryAsylumName, "United States of America", "USA"),
+      CountryAsylumName = stringr::str_replace(
         CountryAsylumName,
         "United Kingdom of Great Britain and Northern Ireland",
         "UK"
