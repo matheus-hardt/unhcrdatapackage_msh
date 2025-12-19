@@ -1857,7 +1857,7 @@ plot_ctr_population_type_abs <- function(
           y = origin_data_prot,
           svg = svg_icon
         ),
-        size = 6.8 # Adjust size as needed
+        size = 5.44 # Adjust size as needed
       ) +
       ggplot2::geom_text(
         data = df_diff,
@@ -2200,7 +2200,7 @@ plot_ctr_population_type_perc <- function(
           y = origin_data_prot,
           svg = svg_icon
         ),
-        size = 8.5 # Adjust size as needed
+        size = 5.44 # Adjust size as needed
       ) +
       ggplot2::geom_text(
         data = df_diff,
