@@ -2330,6 +2330,18 @@ plot_ctr_population_type_per_year <- function(
     "hst" = "HST"
   )
 
+  cols <- c(
+    "Refugees" = "#0072BC",
+    "Asylum-seekers" = "#6CD8FD",
+    "Internally displaced persons" = "#32C189",
+    "Stateless people" = "#FFC740",
+    "Others of concern to UNHCR" = "#A097E3",
+    "Returned refugees" = "#00B398",
+    "Returned idps" = "#00B398",
+    "Host community" = "#BFBFBF",
+    "Other people in need of international protection" = "#D25A45"
+  )
+
 
   df <- refugees::population |>
     dplyr::filter(
@@ -2432,10 +2444,9 @@ plot_ctr_population_type_per_year <- function(
         "#FFFFFF"
       )
     ) +
-    unhcrthemes::scale_fill_unhcr_d(
-      palette = "pal_unhcr_poc",
+    ggplot2::scale_fill_manual(
+      values = cols,
       drop = TRUE,
-      limits = force,
       labels = scales::label_wrap(20)
     ) +
     ggplot2::guides(fill = ggplot2::guide_legend(nrow = 2, byrow = TRUE)) +
