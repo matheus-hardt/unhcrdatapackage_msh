@@ -5,7 +5,7 @@
 #' @param year Numeric value of the year (for instance 2020)
 #' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
 #' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
-#' 
+#'
 #' @importFrom ggplot2 ggplot aes coord_flip element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
 #'             geom_label geom_text labs position_stack scale_color_manual scale_colour_manual
@@ -15,16 +15,15 @@
 #' @importFrom scales label_percent
 #' @importFrom treemapify geom_treemap geom_treemap_text
 #' @importFrom unhcrthemes theme_unhcr
-#' 
+#'
 #' @return plot a ggplot2 object
-#' 
+#'
 #' @export
 #' @examples
 #' plot_reg_treemap(year = 2024, region = "The Americas")
 plot_reg_treemap <- function(year = 2024,
                              region = "The Americas",
                              pop_type = c("REF", "ASY", "IDP", "OIP", "OOC", "STA")) {
-  
   ## Filter popdata for the country report
   datatree <- refugees::population |>
     dplyr::filter(year == !!year) |>
@@ -48,17 +47,29 @@ plot_reg_treemap <- function(year = 2024,
     dplyr::filter(population_type_label %in% pop_type) |>
     dplyr::group_by(year, unhcr_region, population_type_label) |>
     dplyr::summarise(value = sum(value, na.rm = TRUE), .groups = "drop") |>
-    
     # FIX APPLIED HERE: Ungroup the data frame after summarising
     # This allows sum(value) in the next step to calculate the total across the entire region.
     dplyr::ungroup() |>
-    
     # Calculate frequencies relative to the total sum of the regional data
     dplyr::mutate(
       freqinReg = scales::label_percent(accuracy = .1, suffix = "%")(value / sum(value)),
       freq = freqinReg # Keeping 'freq' for consistency, though 'freqinReg' is used in the plot
     )
-  
+
+  if (nrow(datatree) == 0) {
+    info <- paste0("No records for ", region, " in ", year)
+    p <- ggplot2::ggplot() +
+      ggplot2::annotate(
+        "text",
+        x = 1,
+        y = 1,
+        size = 12,
+        label = info
+      ) +
+      ggplot2::theme_void()
+    return(p)
+  }
+
   # Treemapify
   p <- ggplot2::ggplot(
     datatree,
@@ -66,7 +77,7 @@ plot_reg_treemap <- function(year = 2024,
       area = value,
       fill = population_type_label,
       # Use the calculated freqinReg for the label
-      label = paste0(freqinReg, "\n", population_type_label) 
+      label = paste0(freqinReg, "\n", population_type_label)
     )
   ) +
     treemapify::geom_treemap() +
@@ -89,11 +100,11 @@ plot_reg_treemap <- function(year = 2024,
     ggplot2::labs(
       title = paste0("Population of Concern & Affected Host Communities in ", region),
       # Use the total sum from the corrected datatree for the subtitle
-      subtitle = paste0("As of ", year, ", a total of ", format(round(sum(datatree$value), -3), big.mark = ","), " Individuals"), 
+      subtitle = paste0("As of ", year, ", a total of ", format(round(sum(datatree$value), -3), big.mark = ","), " Individuals"),
       x = "",
       y = "",
       caption = "Source: UNHCR.org/refugee-statistics"
     )
-  
+
   return(p)
 }

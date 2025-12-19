@@ -1,8 +1,8 @@
 ---
-title: "Chart Library Region"
+title: "chart-library-region"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Chart Library Region}
+  %\VignetteIndexEntry{chart-library-region}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -133,7 +133,7 @@ plot_reg_population_type_abs(
   
 ```{r example-plot_reg_decrease}
 plot_reg_decrease(
-  year = 2021,
+  year = 2024,
   lag = 5,
   topn = 5,
   region = "The Americas",
@@ -158,7 +158,7 @@ plot_reg_increase(
 )
 
 # plot_reg_increase(
-#   year = 2021,
+#   year = 2024,
 #   lag = 5,
 #   topn = 5,
 #   region = "Asia",

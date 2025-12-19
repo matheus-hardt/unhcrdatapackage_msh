@@ -47,14 +47,13 @@ plot_reg_increase <- function(year = 2024,
                               topn = 5,
                               region = "The Americas",
                               pop_type = c("REF", "ASY", "OIP")) {
-  
   thisyear <- year
   baseline <- thisyear - lag
-  
+
   # Define required column names dynamically
   col_this_year <- paste0("year_", thisyear)
   col_baseline <- paste0("year_", baseline)
-  
+
   data_pivot <- refugees::population |>
     dplyr::filter(year == baseline | year == thisyear) |>
     dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region")) |>
@@ -80,48 +79,44 @@ plot_reg_increase <- function(year = 2024,
     dplyr::mutate(
       coa_name = stringr::str_replace(coa_name, "Democratic Republic of the Congo", "DRC")
     ) |>
-    
     # Use pivot_wider to create year_YYYY columns.
     dplyr::mutate(year_col = paste0("year_", year)) |>
     tidyr::pivot_wider(names_from = year_col, values_from = value, values_fill = NA) # Set fill to NA initially
-    
-  
+
+
   # --- FIX: Use any_of() for defensive column selection ---
-  
+
   # Define columns to select defensively
   required_cols <- c("coa_name", col_this_year, col_baseline)
-  
+
   data <- data_pivot |>
     # 1. Use select(any_of()) to get required columns. Missing columns are silently ignored,
     # and we then fill them with 0 in the next step.
     # Note: coa_name might be the only column if no data exists.
-    dplyr::select(tidyselect::any_of(required_cols)) |> 
-    
+    dplyr::select(tidyselect::any_of(required_cols)) |>
     # 2. Add missing columns with value 0 if they don't exist by using coalesce on required columns.
     # We must ensure all required columns are present for the next calculation.
     dplyr::mutate(
-        !!col_this_year := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_this_year), .default = NA, ~.), 0),
-        !!col_baseline := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_baseline), .default = NA, ~.), 0)
+      !!col_this_year := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_this_year), .default = NA, ~.), 0),
+      !!col_baseline := dplyr::coalesce(dplyr::if_any(tidyselect::all_of(col_baseline), .default = NA, ~.), 0)
     ) |>
-    
     # 3. Calculate the gap
     dplyr::mutate(gap = .data[[col_this_year]] - .data[[col_baseline]]) |>
-    
     dplyr::arrange(dplyr::desc(gap)) |>
     utils::head(topn)
-  
+
   # --- Plotting ---
-  
+
   # If the data frame is empty after filtering/lumping, return NULL gracefully
   if (nrow(data) == 0) {
     message(paste("No increase data found for", region, "between", baseline, "and", thisyear))
     return(invisible(NULL))
   }
-  
+
   # The column names used in ggplot must also be dynamically defined
   aes_x_baseline <- paste0("year_", baseline)
   aes_x_thisyear <- paste0("year_", thisyear)
-  
+
   p <- ggplot2::ggplot(
     data,
     ggplot2::aes(
@@ -166,6 +161,6 @@ plot_reg_increase <- function(year = 2024,
       panel.grid.major.x = ggplot2::element_line(color = "#cbcbcb"),
       panel.grid.major.y = ggplot2::element_blank()
     )
-  
+
   return(p)
 }

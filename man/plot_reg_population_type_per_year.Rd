@@ -24,7 +24,7 @@ plot_reg_population_type_per_year(
 a ggplot2 object
 }
 \description{
-Display evoluation over time for specific population group (one or many) and 
+Display evoluation over time for specific population group (one or many) and
 defined number of years (lag)
 }
 \examples{

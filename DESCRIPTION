@@ -81,10 +81,10 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
+    coolbutuseless/ggsvg,
     edouard-legoupil/ForcedDisplacementStat,
     edouard-legoupil/unhcrshiny,
-    nsgrantham/ggbraid,
-    coolbutuseless/ggsvg
+    nsgrantham/ggbraid
 Config/fusen/version: 0.7.2
 Encoding: UTF-8
 LazyData: TRUE

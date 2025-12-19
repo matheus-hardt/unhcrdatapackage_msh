@@ -22,7 +22,6 @@ plot_reg_population_type_abs <- function(year = 2024,
                                          top_n_countries = 5,
                                          pop_type = "REF",
                                          show_diff_label = TRUE) {
-
   pop_type_label_dict <- c(
     "REF" = "Refugees",
     "ASY" = "Asylum-seekers",

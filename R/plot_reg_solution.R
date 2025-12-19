@@ -35,7 +35,6 @@
 plot_reg_solution <- function(year = 2024,
                               region = "The Americas",
                               lag = 10) {
-
   solutions_long <- refugees::solutions |>
     dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region")) |>
     dplyr::filter(unhcr_region == region) |>
