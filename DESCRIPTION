@@ -83,7 +83,8 @@ VignetteBuilder:
 Remotes: 
     edouard-legoupil/ForcedDisplacementStat,
     edouard-legoupil/unhcrshiny,
-    nsgrantham/ggbraid
+    nsgrantham/ggbraid,
+    coolbutuseless/ggsvg
 Config/fusen/version: 0.7.2
 Encoding: UTF-8
 LazyData: TRUE
