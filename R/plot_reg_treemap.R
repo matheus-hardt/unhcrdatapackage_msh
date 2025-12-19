@@ -56,7 +56,7 @@ plot_reg_treemap <- function(year = 2024,
       freq = freqinReg # Keeping 'freq' for consistency, though 'freqinReg' is used in the plot
     )
 
-  if (nrow(datatree) == 0) {
+  if (nrow(datatree) == 0 || sum(datatree$value, na.rm = TRUE) == 0) {
     info <- paste0("No records for ", region, " in ", year)
     p <- ggplot2::ggplot() +
       ggplot2::annotate(

@@ -124,7 +124,7 @@ plot_ctr_recognition <- function(
         TotalDecided
     ) |>
     dplyr::mutate(
-      CountryOriginName = str_replace(
+      CountryOriginName = stringr::str_replace(
         CountryOriginName,
         " \\(Bolivarian Republic of\\)",
         ""
