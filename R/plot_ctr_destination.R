@@ -35,7 +35,9 @@
 
 plot_ctr_destination <- function(year = 2024,
                                  country_origin_iso3c,
-                                 pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC")) {
+                                 pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC"),
+                                 label_font_size = 4,
+                                 category_font_size = 10) {
   dict_pop_type_label <- c(
     "refugees" = "REF",
     "returned_refugees" = "RETURNED_REF",
@@ -98,7 +100,7 @@ plot_ctr_destination <- function(year = 2024,
     info <- paste0("There's no recorded Countries of destination \n in ", country_name_text, " for ", year)
     p <- ggplot() +
       annotate(stringr::str_wrap("text", 80),
-        x = 1, y = 1, size = 11,
+        x = 1, y = 1, size = label_font_size,
         label = info
       ) +
       theme_void()
@@ -136,7 +138,7 @@ plot_ctr_destination <- function(year = 2024,
         fill = NA,
         linewidth = NA,
         # family = "Lato",
-        size = 4
+        size = label_font_size
       ) +
       geom_label(
         data = subset(
@@ -154,7 +156,7 @@ plot_ctr_destination <- function(year = 2024,
         fill = NA,
         label.size = NA,
         # family = "Lato",
-        size = 4
+        size = label_font_size
       ) +
       # Add `coord_flip()` to make your vertical bars horizontal:
       coord_flip() +
@@ -178,7 +180,10 @@ plot_ctr_destination <- function(year = 2024,
         axis = "y",
         axis_title = FALSE,
         axis_text = "y"
+      ) +
+      theme(
+        axis.text = element_text(size = category_font_size)
       )
   }
-  return(p) # print(p)
+  p
 }

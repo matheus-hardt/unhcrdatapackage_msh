@@ -4,7 +4,7 @@
 \alias{template_CtryFactsheet}
 \title{Generate an html / pdf country factsheet}
 \usage{
-template_CtryFactsheet(year = 2022, country_asylum_iso3c, folder = "Report")
+template_CtryFactsheet(year = 2024, country_asylum_iso3c, folder = "Report")
 }
 \arguments{
 \item{year}{Numeric value of the year (for instance 2022)}
@@ -23,7 +23,7 @@ template that can be customised according to the needs
 }
 \examples{
 ## generate for one country
-# template_CtryFactsheet(year = 2022, country_asylum_iso3c = "USA",   folder = "Report")
+# template_CtryFactsheet(year = 2024, country_asylum_iso3c = "USA",   folder = "Report")
 
 # ## Generate for a specific region
 # region <- "Americas"
@@ -44,7 +44,7 @@ template that can be customised according to the needs
 #     # i <- 1
 #     country_asylum_iso3ci = as.character(ctr[i ,2 ])
 #     cat(paste0(country_asylum_iso3ci, "\n"))
-#     unhcrdatapackage::template_CtryFactsheet(year = 2022, 
+#     unhcrdatapackage::template_CtryFactsheet(year = 2024, 
 #               country_asylum_iso3c = country_asylum_iso3ci,  
 #                folder = "Report")  }
 }

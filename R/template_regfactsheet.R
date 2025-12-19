@@ -38,7 +38,7 @@
 #' #   dplyr::pull()
 #' # 
 #' # for( reg in region) {
-#' #   unhcrviz::template_RegFactsheet(year = 2024, 
+#' #   unhcrdatapackage::template_RegFactsheet(year = 2024, 
 #' #                         region = reg, lag = 10, 
 #' #                         folder = "Report")
 #' # }
@@ -63,7 +63,7 @@ template_RegFactsheet <- function(year = 2024,
                                   region == "WestAfrica"  ~  "Western Africa")
   
   rmarkdown::render(
-    system.file("rmarkdown/templates/regional_factsheet/skeleton/skeleton.Rmd", package = "unhcrviz"),
+    system.file("rmarkdown/templates/regional_factsheet/skeleton/skeleton.Rmd", package = "unhcrdatapackage"),
     output_file = here::here(folder, paste0('StatFactsheet-',  region, '-', year, '.html') ),
     params = list(region=region,
                   regionname = regionname,

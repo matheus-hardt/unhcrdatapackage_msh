@@ -5,7 +5,7 @@
 \title{Plot Biggest decrease in Refugee Population}
 \usage{
 plot_reg_decrease(
-  year = 2021,
+  year = 2024,
   lag = 5,
   topn = 5,
   region = "The Americas",
@@ -33,7 +33,7 @@ Plot Biggest decrease in Refugee Population
 }
 \examples{
 plot_reg_decrease(
-  year = 2021,
+  year = 2024,
   lag = 5,
   topn = 5,
   region = "The Americas",

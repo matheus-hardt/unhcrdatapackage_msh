@@ -48,7 +48,7 @@
 #' #     # i <- 1
 #' #     country_asylum_iso3c = as.character(ctr[i ,2 ])
 #' #     cat(paste0(country_asylum_iso3c, "\n"))
-#' #     unhcrviz::template_CtryPrez(year = 2024, 
+#' #     unhcrdatapackage::template_CtryPrez(year = 2024, 
 #' #                                   country_asylum_iso3c = country_asylum_iso3c,  
 #' #                                   folder = "Report")
 #' #   }
@@ -69,7 +69,7 @@ template_RegPrez <- function(year = 2024,
                                   region == "SouthAfrica"  ~  "Southern Africa",
                                   region == "WestAfrica"  ~  "Western Africa")
   rmarkdown::render(
-    system.file("rmarkdown/templates/regional_prez/skeleton/skeleton.Rmd", package = "unhcrviz"),
+    system.file("rmarkdown/templates/regional_prez/skeleton/skeleton.Rmd", package = "unhcrdatapackage"),
     output_file = here::here(folder, paste0('StatFactsheet-', region, '-', year, '.pptx') ),
     params = list(region=region, 
                   regionname = regionname,

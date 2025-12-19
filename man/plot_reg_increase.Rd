@@ -5,7 +5,7 @@
 \title{Plot Biggest Increase in Refugee Population}
 \usage{
 plot_reg_increase(
-  year = 2021,
+  year = 2024,
   lag = 5,
   topn = 5,
   region = "The Americas",
@@ -41,7 +41,7 @@ plot_reg_increase(
 )
 
 # plot_reg_increase(
-#   year = 2021,
+#   year = 2024,
 #   lag = 5,
 #   topn = 5,
 #   region = "Asia",

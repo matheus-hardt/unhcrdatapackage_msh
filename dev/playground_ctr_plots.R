@@ -4166,3 +4166,24 @@ run_test(
 )
 
 print("Done.")
+
+# 17. Disp Migrant
+plot_ctr_disp_migrant <- function(year = 2024,
+                                  country_asylum_iso3c,
+                                  top_n_countries = 10,
+                                  label_font_size = 4,
+                                  category_font_size = 10) {
+  # Function disabled due to missing migrants data
+  p <- ggplot2::ggplot() +
+    ggplot2::annotate("text", x = 1, y = 1, label = "Migrant data not available", size = label_font_size) +
+    ggplot2::theme_void()
+  return(p)
+}
+
+run_test(
+  plot_ctr_disp_migrant,
+  "plot_ctr_disp_migrant",
+  year = year,
+  country_asylum_iso3c = country_asylum_iso3c
+)
+

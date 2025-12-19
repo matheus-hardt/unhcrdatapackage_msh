@@ -5,9 +5,11 @@
 \title{Main Destination from  one specific countr}
 \usage{
 plot_ctr_destination(
-  year = 2021,
+  year = 2024,
   country_origin_iso3c,
-  pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC")
+  pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC"),
+  label_font_size = 4,
+  category_font_size = 10
 )
 }
 \arguments{
@@ -26,7 +28,7 @@ Main Destination from  one specific countr
 \examples{
 #
 plot_ctr_destination(
-  year = 2021,
+  year = 2024,
   country_origin_iso3c = "COL",
   pop_type = c("REF", "ASY")
 )

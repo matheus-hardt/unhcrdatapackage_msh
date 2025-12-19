@@ -183,7 +183,7 @@ app_ui <- function() {
 golem_add_external_resources <- function(){
 
   addResourcePath(
-    'www', system.file('app/www', package = "unhcrviz")
+    'www', system.file('app/www', package = "unhcrdatapackage")
   )
 
   tags$head(

@@ -5,7 +5,7 @@
 \title{Generate all country factsheet}
 \usage{
 template_RegFactsheet(
-  year = 2022,
+  year = 2024,
   region = "Americas",
   lag = 10,
   folder = "Report"
@@ -29,7 +29,7 @@ Generate all country factsheet
 }
 \examples{
 
-# template_RegFactsheet(year = 2022, 
+# template_RegFactsheet(year = 2024, 
 #                       region = "Europe", lag = 10,  
 #                       folder = "Report")
 
@@ -41,7 +41,7 @@ Generate all country factsheet
 #   dplyr::pull()
 # 
 # for( reg in region) {
-#   unhcrdatapackage::template_RegFactsheet(year = 2022, 
+#   unhcrdatapackage::template_RegFactsheet(year = 2024, 
 #                         region = reg, lag = 10, 
 #                         folder = "Report")
 # }
