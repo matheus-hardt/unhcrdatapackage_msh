@@ -46,7 +46,6 @@ Imports:
     magrittr,
     mapsf,
     OpenStreetMap,
-    pak,
     patchwork,
     purrr,
     refugees,
@@ -77,6 +76,7 @@ Imports:
     WDI
 Suggests: 
     knitr,
+    pak,
     testthat
 VignetteBuilder: 
     knitr
