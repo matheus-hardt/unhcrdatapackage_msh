@@ -440,9 +440,9 @@ plot_ctr_recognition <- function(year = 2024,
     dplyr::mutate(CountryOriginName = stringr::str_replace(CountryOriginName, " \\(Bolivarian Republic of\\)", ""))
 
   topOrigin1 <- topOrigin |>
-    mutate(measured = .data[[measure]]) |>
-    mutate(order_by = .data[[order_by]]) |>
-    arrange(desc(order_by)) |>
+    dplyr::mutate(measured = .data[[measure]]) |>
+    dplyr::mutate(order_by = .data[[order_by]]) |>
+    dplyr::arrange(desc(order_by)) |>
     head(top_n_countries)
 
 
