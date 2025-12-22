@@ -7,6 +7,7 @@ globalVariables(unique(c(
   "coa_iso", "coo_iso", "coa_name", "coo_name", "population_type_name",
   "refugees", "asylum_seekers", "idps", "oip", "stateless", "ooc", "hst",
   "input", "output", "session", "p",
+  "dec_rejected", "dec_closed", "Country of Origin",
   # plot_ctr_keyfig
   "icon", "pal", "fig",
   # plot_ctr_asylum:
