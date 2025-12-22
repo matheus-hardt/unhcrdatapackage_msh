@@ -13,7 +13,7 @@ template_RegPrez(year = 2024, region = "Americas", lag = 10, folder = "Report")
 
 \item{lag}{Number of year to used as comparison base}
 
-\item{folder}{folder within your project where to put the generated report. 
+\item{folder}{folder within your project where to put the generated report.
 Folder will be created if it does not exist}
 }
 \value{
@@ -27,7 +27,7 @@ Generate all country factsheet
 
 # # Generate for a specific region
 # region <- "Americas"
-# year <- 2022
+# year <- 2024
 # library(tidyverse)
 # ## get all countries with more than 1000 Reported individuals
 # ctr <- dplyr::left_join( x= ForcedDisplacementStat::end_year_population_totals_long,
@@ -39,13 +39,13 @@ Generate all country factsheet
 #         summarise(Value = sum(Value) ) |>
 #         ungroup() |>
 #         filter( Value  > 1000 )
-# 
+#
 #   for ( i in (1:nrow(ctr))) {
 #     # i <- 1
 #     country_asylum_iso3c = as.character(ctr[i ,2 ])
 #     cat(paste0(country_asylum_iso3c, "\n"))
-#     unhcrdatapackage::template_CtryPrez(year = 2024, 
-#                                   country_asylum_iso3c = country_asylum_iso3c,  
+#     unhcrdatapackage::template_CtryPrez(year = 2024,
+#                                   country_asylum_iso3c = country_asylum_iso3c,
 #                                   folder = "Report")
 #   }
 }

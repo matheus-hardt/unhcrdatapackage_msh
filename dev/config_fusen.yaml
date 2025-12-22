@@ -79,3 +79,23 @@ dev_plot_Region.Rmd:
     overwrite: 'yes'
     clean: ask
     codecov: false
+dev_template.Rmd:
+  path: dev/dev_template.Rmd
+  state: active
+  R:
+  - R/template_ctryfactsheet.R
+  - R/template_ctryprez.R
+  - R/template_ctryslides.R
+  - R/template_regfactsheet.R
+  - R/template_regprez.R
+  tests: []
+  vignettes: vignettes/report-template.Rmd
+  inflate:
+    flat_file: dev/dev_template.Rmd
+    vignette_name: Report Template
+    open_vignette: true
+    check: false
+    document: true
+    overwrite: 'yes'
+    clean: ask
+    codecov: false

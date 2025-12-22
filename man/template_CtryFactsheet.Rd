@@ -11,14 +11,14 @@ template_CtryFactsheet(year = 2024, country_asylum_iso3c, folder = "Report")
 
 \item{country_asylum_iso3c}{Character value with the ISO-3 character code of the Country of Asylum}
 
-\item{folder}{folder within your project where to put the generated report. 
+\item{folder}{folder within your project where to put the generated report.
 Folder will be created if it does not exist}
 }
 \value{
 nothing the file for the report is generated
 }
 \description{
-This functions provides a quick access to a basic Statistical Fact sheet 
+This functions provides a quick access to a basic Statistical Fact sheet
 template that can be customised according to the needs
 }
 \examples{
@@ -27,7 +27,7 @@ template that can be customised according to the needs
 
 # ## Generate for a specific region
 # region <- "Americas"
-# year <- 2022
+# year <- 2024
 # library(tidyverse)
 # ## get all countries with more than 1000 Reported individuals
 # ctr <- dplyr::left_join( x= ForcedDisplacementStat::end_year_population_totals_long,
@@ -39,12 +39,12 @@ template that can be customised according to the needs
 #         summarise(Value = sum(Value) ) |>
 #         ungroup() |>
 #         filter( Value  > 1000 )
-# 
+#
 # for ( i in (1:nrow(ctr))) {
 #     # i <- 1
 #     country_asylum_iso3ci = as.character(ctr[i ,2 ])
 #     cat(paste0(country_asylum_iso3ci, "\n"))
-#     unhcrdatapackage::template_CtryFactsheet(year = 2024, 
-#               country_asylum_iso3c = country_asylum_iso3ci,  
+#     unhcrdatapackage::template_CtryFactsheet(year = 2024,
+#               country_asylum_iso3c = country_asylum_iso3ci,
 #                folder = "Report")  }
 }

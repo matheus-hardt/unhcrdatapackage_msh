@@ -25,10 +25,26 @@ plot_reg_treemap <- function(year = 2024,
                              region = "The Americas",
                              pop_type = c("REF", "ASY", "IDP", "OIP", "OOC", "STA")) {
   ## Filter popdata for the country report
-  datatree <- refugees::population |>
+  datatree_pre <- refugees::population |>
     dplyr::filter(year == !!year) |>
     dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region")) |>
-    dplyr::filter(unhcr_region == region) |>
+    dplyr::filter(unhcr_region == region)
+
+  if (nrow(datatree_pre) == 0) {
+    info <- paste0("No records for ", region, " in ", year)
+    p <- ggplot2::ggplot() +
+      ggplot2::annotate(
+        "text",
+        x = 1,
+        y = 1,
+        size = 12,
+        label = info
+      ) +
+      ggplot2::theme_void()
+    return(p)
+  }
+
+  datatree <- datatree_pre |>
     tidyr::pivot_longer(
       cols = c(refugees, asylum_seekers, idps, oip, stateless, ooc, hst),
       names_to = "population_type",
@@ -46,15 +62,7 @@ plot_reg_treemap <- function(year = 2024,
     )) |>
     dplyr::filter(population_type_label %in% pop_type) |>
     dplyr::group_by(year, unhcr_region, population_type_label) |>
-    dplyr::summarise(value = sum(value, na.rm = TRUE), .groups = "drop") |>
-    # FIX APPLIED HERE: Ungroup the data frame after summarising
-    # This allows sum(value) in the next step to calculate the total across the entire region.
-    dplyr::ungroup() |>
-    # Calculate frequencies relative to the total sum of the regional data
-    dplyr::mutate(
-      freqinReg = scales::label_percent(accuracy = .1, suffix = "%")(value / sum(value)),
-      freq = freqinReg # Keeping 'freq' for consistency, though 'freqinReg' is used in the plot
-    )
+    dplyr::summarise(value = sum(value, na.rm = TRUE), .groups = "drop")
 
   if (nrow(datatree) == 0 || sum(datatree$value, na.rm = TRUE) == 0) {
     info <- paste0("No records for ", region, " in ", year)
@@ -69,6 +77,16 @@ plot_reg_treemap <- function(year = 2024,
       ggplot2::theme_void()
     return(p)
   }
+
+  datatree <- datatree |>
+    # FIX APPLIED HERE: Ungroup the data frame after summarising
+    # This allows sum(value) in the next step to calculate the total across the entire region.
+    dplyr::ungroup() |>
+    # Calculate frequencies relative to the total sum of the regional data
+    dplyr::mutate(
+      freqinReg = scales::label_percent(accuracy = .1, suffix = "%")(value / sum(value)),
+      freq = freqinReg # Keeping 'freq' for consistency, though 'freqinReg' is used in the plot
+    )
 
   # Treemapify
   p <- ggplot2::ggplot(

@@ -11,7 +11,7 @@ template_Ctryslides(year = 2024, country_asylum_iso3c, folder = "Report")
 
 \item{country_asylum_iso3c}{Character value with the ISO-3 character code of the Country}
 
-\item{folder}{folder within your project where to put the generated report. 
+\item{folder}{folder within your project where to put the generated report.
 Folder will be created if it does not exist}
 }
 \value{
@@ -22,7 +22,7 @@ Output is PDF slide deck that preserves well the humanitarian icons
 }
 \examples{
 ## generate for one country
-# unhcrdatapackage::template_Ctryslides(year = 2024, 
+# unhcrdatapackage::template_Ctryslides(year = 2024,
 #                             country_asylum_iso3c = "CHL",
 #                             folder = "Report")
 
@@ -40,7 +40,7 @@ Output is PDF slide deck that preserves well the humanitarian icons
 #         summarise(Value = sum(Value) ) |>
 #         ungroup() |>
 #         filter( Value  > 1000 )
-# 
+#
 # for ( i in (1:nrow(ctr))) {
 #     # i <- 1
 #     country_asylum_iso3ci = as.character(ctr[i ,2 ])

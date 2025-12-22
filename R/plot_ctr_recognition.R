@@ -70,14 +70,6 @@
 #'   measure = "RefugeeRecognitionRate",
 #'   order_by = "TotalDecided"
 #' )
-#'
-#' plot_ctr_recognition(
-#'   year = 2024,
-#'   country_asylum_iso3c = "USA",
-#'   top_n_countries = 10,
-#'   measure = "RefugeeRecognitionRate",
-#'   order_by = "TotalDecided"
-#' )
 plot_ctr_recognition <- function(
   year = 2024,
   country_asylum_iso3c,
