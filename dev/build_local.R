@@ -1,4 +1,4 @@
-# Build script for unhcrdatapackage
+# Build script for unhcrviz
 
 # Inflate flat files
 message("Inflating dev_plot_Country.Rmd...")

@@ -68,11 +68,11 @@ dev_plot_Country.Rmd:
   - tests/testthat/test-plot_ctr_solution.R
   - tests/testthat/test-plot_ctr_solution_recognition.R
   - tests/testthat/test-plot_ctr_disp_migrant.R
-  vignettes: vignettes/map-and-ranking-for-countries.Rmd
+  vignettes: vignettes/chart-library-country.Rmd
   inflate:
     flat_file: dev/dev_plot_Country.Rmd
-    vignette_name: Map and Ranking for Countries
-    open_vignette: false
+    vignette_name: chart-library-country
+    open_vignette: true
     check: false
     document: true
     overwrite: 'yes'
@@ -104,11 +104,11 @@ dev_plot_Region.Rmd:
   - tests/testthat/test-plot_reg_rsd.R
   - tests/testthat/test-plot_reg_solution.R
   - tests/testthat/test-plot_reg_map.R
-  vignettes: vignettes/map-and-ranking-for-regions.Rmd
+  vignettes: vignettes/chart-library-region.Rmd
   inflate:
     flat_file: dev/dev_plot_Region.Rmd
-    vignette_name: Map and Ranking for Regions
-    open_vignette: false
+    vignette_name: chart-library-region
+    open_vignette: true
     check: false
     document: true
     overwrite: 'yes'

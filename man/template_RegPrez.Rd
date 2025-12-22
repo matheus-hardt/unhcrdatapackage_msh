@@ -42,7 +42,7 @@ Generate all country factsheet
 #     # i <- 1
 #     country_asylum_iso3c = as.character(ctr[i ,2 ])
 #     cat(paste0(country_asylum_iso3c, "\n"))
-#     unhcrdatapackage::template_CtryPrez(year = 2024,
+#     unhcrviz::template_CtryPrez(year = 2024,
 #                                   country_asylum_iso3c = country_asylum_iso3c,
 #                                   folder = "Report")
 #   }

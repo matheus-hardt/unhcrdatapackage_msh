@@ -1,7 +1,7 @@
 ### This is done to register the font from the package when it gets loaded!!
 
 .onLoad <- function(libname, pkgname) {
-  font_dir <- system.file("fonts", package = "unhcrdatapackage")
+  font_dir <- system.file("fonts", package = "unhcrviz")
   sysfonts::font_paths(font_dir)
 
   ## For showtext
@@ -48,3 +48,4 @@
 .onUnload <- function(libpath) {
   showtext::showtext_auto(FALSE)
 }
+

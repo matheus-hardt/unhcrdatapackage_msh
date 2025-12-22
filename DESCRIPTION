@@ -1,5 +1,5 @@
 Type: Package
-Package: unhcrdatapackage
+Package: unhcrviz
 Title: UNHCR Population Statistics Database with Chart Library and
     Factsheet Template
 Version: 0.1.9
@@ -16,8 +16,8 @@ Description: This is a data package with all frames organised and
     includes a series of plotting functions both at country and regional
     level together with Rmd Templates.
 License: MIT + file LICENSE
-URL: https://edouard-legoupil.github.io/unhcrdatapackage/docs/
-BugReports: https://github.com/edouard-legoupil/unhcrdatapackage/issues
+URL: https://edouard-legoupil.github.io/unhcrviz/docs/
+BugReports: https://github.com/edouard-legoupil/unhcrviz/issues
 Imports: 
     bsplus,
     circlize,

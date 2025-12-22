@@ -40,7 +40,7 @@ Generate all country factsheet
 #   dplyr::pull()
 #
 # for( reg in region) {
-#   unhcrdatapackage::template_RegFactsheet(year = 2024,
+#   unhcrviz::template_RegFactsheet(year = 2024,
 #                         region = reg, lag = 10,
 #                         folder = "Report")
 # }

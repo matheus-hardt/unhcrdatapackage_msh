@@ -23,7 +23,7 @@ Generate all country factsheet
 }
 \examples{
 ## generate for one country
-# unhcrdatapackage::template_CtryPrez(year = 2024,
+# unhcrviz::template_CtryPrez(year = 2024,
 #                             country_asylum_iso3c = "CHL",
 #                             folder = "Report")
 
@@ -44,7 +44,7 @@ Generate all country factsheet
 #     # i <- 1
 #     country_asylum_iso3ci = as.character(ctr[i ,2 ])
 #     cat(paste0(country_asylum_iso3ci, "\n"))
-#     unhcrdatapackage::template_CtryFactsheet(year = 2024,
+#     unhcrviz::template_CtryFactsheet(year = 2024,
 #                                 country_asylum_iso3c = country_asylum_iso3ci,
 #                                folder = "Report")  }
 }

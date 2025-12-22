@@ -232,7 +232,7 @@ app_ui <- function() {
 #' @import shiny
 golem_add_external_resources <- function() {
   addResourcePath(
-    "www", system.file("app/www", package = "unhcrdatapackage")
+    "www", system.file("app/www", package = "unhcrviz")
   )
 
   tags$head(
@@ -259,3 +259,4 @@ golem_add_external_resources <- function() {
     tags$meta(name = "twitter:image", content = "https://edouard-legoupil.github.io/unhcrviz/reference/figures/hex-unhcrviz.png")
   )
 }
+

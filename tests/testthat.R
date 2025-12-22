@@ -1,4 +1,5 @@
 library(testthat)
-library(unhcrdatapackage)
+library(unhcrviz)
 
-test_check("unhcrdatapackage")
+test_check("unhcrviz")
+

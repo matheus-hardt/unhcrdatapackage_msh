@@ -22,7 +22,7 @@ Output is PDF slide deck that preserves well the humanitarian icons
 }
 \examples{
 ## generate for one country
-# unhcrdatapackage::template_Ctryslides(year = 2024,
+# unhcrviz::template_Ctryslides(year = 2024,
 #                             country_asylum_iso3c = "CHL",
 #                             folder = "Report")
 
@@ -43,7 +43,7 @@ Output is PDF slide deck that preserves well the humanitarian icons
 #     # i <- 1
 #     country_asylum_iso3ci = as.character(ctr[i ,2 ])
 #     cat(paste0(country_asylum_iso3ci, "\n"))
-#     unhcrdatapackage::template_CtryFactsheet(year = 2024,
+#     unhcrviz::template_CtryFactsheet(year = 2024,
 #                                 country_asylum_iso3c = country_asylum_iso3ci,
 #                                folder = "docs/factsheet")  }
 }

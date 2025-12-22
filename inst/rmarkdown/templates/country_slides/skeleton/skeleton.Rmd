@@ -46,10 +46,10 @@ library(fontawesome)
 
 
 ##  make sure to get last version of the chart library
-if (packageVersion("unhcrdatapackage") != "0.1.9") {
-  pak::pkg_install("edouard-legoupil/unhcrdatapackage")
+if (packageVersion("unhcrviz") != "0.1.9") {
+  pak::pkg_install("edouard-legoupil/unhcrviz")
 }
-library(unhcrdatapackage)
+library(unhcrviz)
 library(refugees)
 
 # turn off the automatic use of showtext functionality, so that the dml function can works properly
@@ -64,7 +64,7 @@ showtext::showtext_auto(FALSE)
 
 
 
-> ## “__Numbers have an important story to tell. They rely on YOU to give them a voice!__”
+> ## â€œ__Numbers have an important story to tell. They rely on YOU to give them a voice!__â€
 
 > -- Stephen Few
 
@@ -361,8 +361,9 @@ plot_ctr_disp_migrant(
 
 # Next...
 
-The charts from this slide deck constitute a [chart library](https://edouard-legoupil.github.io/unhcrdatapackage/articles/chart-library.html#country-questions) can be used and re-used in reports, talking points and social medias. The charts are in vector formats and can be easily imported in specialized publication software (like Adobe, Publisher or Inkscape).
+The charts from this slide deck constitute a [chart library](https://edouard-legoupil.github.io/unhcrviz/articles/chart-library.html#country-questions) can be used and re-used in reports, talking points and social medias. The charts are in vector formats and can be easily imported in specialized publication software (like Adobe, Publisher or Inkscape).
 
-You may [enhance the charts story-telling ability](https://edouard-legoupil.github.io/unhcrdatapackage/articles/library.html) by adjusting the message in the title, highlighting specific parts of the data or adding annotation to ease interpretation or provide more contextual background.
+You may [enhance the charts story-telling ability](https://edouard-legoupil.github.io/unhcrviz/articles/library.html) by adjusting the message in the title, highlighting specific parts of the data or adding annotation to ease interpretation or provide more contextual background.
 
-You can [contribute](https://edouard-legoupil.github.io/unhcrdatapackage/articles/adding-new-charts.html)  to this data literacy product by reporting potential issues you may have detected, asking questions or sharing ideas for new charts to be included.
+You can [contribute](https://edouard-legoupil.github.io/unhcrviz/articles/adding-new-charts.html)  to this data literacy product by reporting potential issues you may have detected, asking questions or sharing ideas for new charts to be included.
+
