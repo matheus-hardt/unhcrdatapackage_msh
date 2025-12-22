@@ -71,8 +71,8 @@ dev_plot_Country.Rmd:
   vignettes: vignettes/chart-library-country.Rmd
   inflate:
     flat_file: dev/dev_plot_Country.Rmd
-    vignette_name: chart-library-country
-    open_vignette: true
+    vignette_name: Chart Library Country
+    open_vignette: false
     check: false
     document: true
     overwrite: 'yes'
@@ -107,8 +107,8 @@ dev_plot_Region.Rmd:
   vignettes: vignettes/chart-library-region.Rmd
   inflate:
     flat_file: dev/dev_plot_Region.Rmd
-    vignette_name: chart-library-region
-    open_vignette: true
+    vignette_name: Chart Library Region
+    open_vignette: false
     check: false
     document: true
     overwrite: 'yes'

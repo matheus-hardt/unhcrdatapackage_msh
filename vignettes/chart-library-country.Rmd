@@ -1,8 +1,8 @@
 ---
-title: "chart-library-country"
+title: "Chart Library Country"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{chart-library-country}
+  %\VignetteIndexEntry{Chart Library Country}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
