@@ -437,7 +437,7 @@ plot_ctr_recognition <- function(year = 2024,
       RefugeeRecognitionRate = (Recognized) / TotalDecided,
       TotalRecognitionRate = (Recognized + ComplementaryProtection) / TotalDecided
     ) |>
-    dplyr::mutate(CountryOriginName = str_replace(CountryOriginName, " \\(Bolivarian Republic of\\)", ""))
+    dplyr::mutate(CountryOriginName = stringr::str_replace(CountryOriginName, " \\(Bolivarian Republic of\\)", ""))
 
   topOrigin1 <- topOrigin |>
     mutate(measured = .data[[measure]]) |>
