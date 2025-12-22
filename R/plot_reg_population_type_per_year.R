@@ -6,7 +6,8 @@
 #' defined number of years (lag)
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #' @param lag Number of year to used as comparison base
 #' @param pop_type Character value. Possible population type (e.g.: REF, IDP, ASY,   OIP, OOC, STA)
 #'

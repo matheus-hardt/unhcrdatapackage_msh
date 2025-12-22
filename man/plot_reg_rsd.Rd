@@ -9,7 +9,8 @@ plot_reg_rsd(year = 2024, region, top_n_countries = 10, measure = "Recognized")
 \arguments{
 \item{year}{Numeric value of the year (for instance 2020)}
 
-\item{region}{Character value with the related UNHCR bureau - when left null, it will display the whole world}
+\item{region}{Character value with the related UNHCR bureau - when left null,
+it will display the whole world}
 
 \item{top_n_countries}{Numeric value of number of main countries that the graph should display}
 

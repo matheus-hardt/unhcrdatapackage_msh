@@ -42,8 +42,10 @@ pkgload::load_all(export_all = FALSE)
 #' Population group in the region
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
-#' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
+#' @param pop_type Vector of character values. Possible population type
+#'                 (e.g.: REF, IDP, ASY, OIP, OOC, STA)
 #'
 #' @importFrom ggplot2 ggplot aes coord_flip element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
@@ -183,8 +185,10 @@ plot_reg_treemap(year = 2024, region = "The Americas")
 #' Simple treemap charts to do the comparison
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
-#' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
+#' @param pop_type Vector of character values. Possible population type
+#'                 (e.g.: REF, IDP, ASY, OIP, OOC, STA)
 #'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
@@ -317,7 +321,8 @@ plot_reg_share(
 #' defined number of years (lag)
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #' @param lag Number of year to used as comparison base
 #' @param pop_type Character value. Possible population type (e.g.: REF, IDP, ASY,   OIP, OOC, STA)
 #'
@@ -452,7 +457,8 @@ plot_reg_population_type_per_year(
 #' Chord diagram showing Origin destination see - https://jokergoo.github.io/circlize_book/book/
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #'
 #' @importFrom ggplot2 ggplot aes
 #' @importFrom dplyr desc select case_when lag mutate group_by filter summarise ungroup pull distinct n arrange across slice left_join summarize rename
@@ -1014,7 +1020,8 @@ plot_reg_increase(
 #' it consistutes is a useful way to identify the countries of origin producing the most refugees relative to their number of inhabitants.
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary
@@ -1137,7 +1144,8 @@ plot_reg_prop_origin(year = 2024, region = "The Americas")
 #' Show the main host and origin countries based on number of decisions
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #' @param top_n_countries Numeric value of number of main countries that the graph should display
 #' @param measure this can be either:
 #'            * Recognized
@@ -1363,7 +1371,8 @@ plot_reg_rsd(
 #'
 #' Description
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #' @param lag Number of year to used as comparison base
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary

@@ -6,7 +6,8 @@
 #'             If the data is not yet available for that year (aka still in the mid year reporting stage),
 #'              it will automatically fall back on the previous year
 #'
-#' @param country_origin_iso3c Character value with the ISO-3 character code of the Country of Origin
+#' @param country_origin_iso3c Character value with the ISO-3 character code
+#'                             of the Country of Origin
 #' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
 #' @param mapbackground can be "osm" (default), "stamen-toner" , "stamen-terrain","stamen-watercolor".
 #'            Other mapbackground requires an API key and were not considered

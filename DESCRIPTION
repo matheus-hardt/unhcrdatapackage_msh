@@ -11,10 +11,10 @@ Authors@R: c(
 Maintainer: Edouard Legoupil <legoupil@unhcr.org>
 Description: This is a data package with all frames organised and
     reshapped for easy consumptions in R. For more information, please see
-    consult
-    [https://www.unhcr.org/refugee-statistics/](https://www.unhcr.org/refugee-statistics).
-    The packages also includes a series of plotting functions both at
-    country and regional level together with Rmd Templates.
+    consult [https://www.unhcr.org/refugee-statistics/]
+    (https://www.unhcr.org/refugee-statistics).  The packages also
+    includes a series of plotting functions both at country and regional
+    level together with Rmd Templates.
 License: MIT + file LICENSE
 URL: https://edouard-legoupil.github.io/unhcrdatapackage/docs/
 BugReports: https://github.com/edouard-legoupil/unhcrdatapackage/issues

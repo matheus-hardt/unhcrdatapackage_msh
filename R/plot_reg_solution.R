@@ -4,7 +4,8 @@
 #'
 #' Description
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #' @param lag Number of year to used as comparison base
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary

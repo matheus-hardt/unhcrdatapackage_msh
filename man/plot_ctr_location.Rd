@@ -18,7 +18,8 @@ plot_ctr_location(
 If the data is not yet available for that year (aka still in the mid year reporting stage),
  it will automatically fall back on the previous year}
 
-\item{country_origin_iso3c}{Character value with the ISO-3 character code of the Country of Origin}
+\item{country_origin_iso3c}{Character value with the ISO-3 character code
+of the Country of Origin}
 
 \item{pop_type}{Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)}
 

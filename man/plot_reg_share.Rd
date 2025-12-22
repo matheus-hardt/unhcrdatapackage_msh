@@ -9,9 +9,11 @@ plot_reg_share(year = 2024, region = "The Americas", pop_type = "REF")
 \arguments{
 \item{year}{Numeric value of the year (for instance 2020)}
 
-\item{region}{Character value with the related UNHCR bureau - when left null, it will display the whole world}
+\item{region}{Character value with the related UNHCR bureau - when left null,
+it will display the whole world}
 
-\item{pop_type}{Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)}
+\item{pop_type}{Vector of character values. Possible population type
+(e.g.: REF, IDP, ASY, OIP, OOC, STA)}
 }
 \value{
 plot a ggplot2 object

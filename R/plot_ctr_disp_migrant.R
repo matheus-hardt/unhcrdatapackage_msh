@@ -12,7 +12,8 @@
 #'
 #' @param year Numeric value of the year (for instance 2020)
 #' @param country_asylum_iso3c Character value with the ISO-3 character code of the Country of Asylum
-#' @param top_n_countries Numeric value of number of main countries that the graph should display
+#' @param top_n_countries Numeric value of number of main countries that the graph
+#'                        should display
 #' @param label_font_size Numeric value for label font size, default to 4
 #' @param category_font_size Numeric value for axis text font size, default to 10
 #'

@@ -9,7 +9,8 @@ template_CtryFactsheet(year = 2024, country_asylum_iso3c, folder = "Report")
 \arguments{
 \item{year}{Numeric value of the year (for instance 2022)}
 
-\item{country_asylum_iso3c}{Character value with the ISO-3 character code of the Country of Asylum}
+\item{country_asylum_iso3c}{Character value with the ISO-3 character code
+of the Country of Asylum}
 
 \item{folder}{folder within your project where to put the generated report.
 Folder will be created if it does not exist}

@@ -21,8 +21,10 @@
 #'      See https://www.unhcr.org/4ce531e09.pdf
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param country_origin_iso3c Character value with the ISO-3 character code of the Country of Origin
-#' @param top_n_countries Numeric value of number of main countries that the graph should display
+#' @param country_origin_iso3c Character value with the ISO-3 character code
+#'                             of the Country of Origin
+#' @param top_n_countries Numeric value of number of main countries that the graph
+#'                        should display
 #' @param measure this can be either:
 #'            * RefugeeRecognitionRate
 #'            * TotalRecognitionRate

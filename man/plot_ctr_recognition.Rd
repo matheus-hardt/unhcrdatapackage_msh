@@ -19,7 +19,8 @@ plot_ctr_recognition(
 
 \item{country_asylum_iso3c}{Character value with the ISO-3 character code of the Country of Asylum}
 
-\item{top_n_countries}{Numeric value of number of main countries that the graph should display}
+\item{top_n_countries}{Numeric value of number of main countries that the graph
+should display}
 
 \item{measure}{this can be either:
 * RefugeeRecognitionRate

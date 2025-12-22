@@ -5,7 +5,8 @@
 #' Show the main host and origin countries based on number of decisions
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #' @param top_n_countries Numeric value of number of main countries that the graph should display
 #' @param measure this can be either:
 #'            * Recognized

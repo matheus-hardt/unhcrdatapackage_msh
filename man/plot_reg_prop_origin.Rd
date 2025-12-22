@@ -9,7 +9,8 @@ plot_reg_prop_origin(year = 2024, region = "The Americas")
 \arguments{
 \item{year}{Numeric value of the year (for instance 2020)}
 
-\item{region}{Character value with the related UNHCR bureau - when left null, it will display the whole world}
+\item{region}{Character value with the related UNHCR bureau - when left null,
+it will display the whole world}
 }
 \value{
 a ggplot2 object

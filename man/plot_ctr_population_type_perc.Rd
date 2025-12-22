@@ -19,9 +19,11 @@ plot_ctr_population_type_perc(
 
 \item{country_asylum_iso3c}{Character value with the ISO-3 character code of the Country of Asylum}
 
-\item{top_n_countries}{Numeric value of number of main countries that the graph should display}
+\item{top_n_countries}{Numeric value of number of main countries that the graph
+should display}
 
-\item{pop_type}{Character value. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)}
+\item{pop_type}{Character value. Possible population type
+(e.g.: REF, IDP, ASY, OIP, OOC, STA)}
 
 \item{label_font_size}{Numeric value for label font size, default to 4}
 

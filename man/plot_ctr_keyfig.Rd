@@ -17,11 +17,14 @@ plot_ctr_keyfig(
 \arguments{
 \item{year}{Numeric value of the year (for instance 2020)}
 
-\item{country_asylum_iso3c}{Character value with the ISO-3 character code of the Country of Asylum}
+\item{country_asylum_iso3c}{Character value with the ISO-3 character code
+of the Country of Asylum}
 
-\item{population_type_font_size}{Numeric value for population type font size, default to 4}
+\item{population_type_font_size}{Numeric value for population type font size,
+default to 4}
 
-\item{population_size_font_size}{Numeric value for population size number font size, default to 5}
+\item{population_size_font_size}{Numeric value for population size number font size,
+default to 5}
 
 \item{icon_size}{Numeric value for icon size, default to 5}
 }

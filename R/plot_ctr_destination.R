@@ -3,7 +3,8 @@
 #' Main Destination from  one specific countr
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param country_origin_iso3c Character value with the ISO-3 character code of the Country of Origin
+#' @param country_origin_iso3c Character value with the ISO-3 character code
+#'                             of the Country of Origin
 #' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
 #'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line

@@ -5,7 +5,8 @@
 #' Chord diagram showing Origin destination see - https://jokergoo.github.io/circlize_book/book/
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
 #'
 #' @importFrom ggplot2 ggplot aes
 #' @importFrom dplyr desc select case_when lag mutate group_by filter summarise ungroup pull distinct n arrange across slice left_join summarize rename

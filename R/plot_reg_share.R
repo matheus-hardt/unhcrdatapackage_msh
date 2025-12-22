@@ -5,8 +5,10 @@
 #' Simple treemap charts to do the comparison
 #'
 #' @param year Numeric value of the year (for instance 2020)
-#' @param region Character value with the related UNHCR bureau - when left null, it will display the whole world
-#' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OOC, STA)
+#' @param region Character value with the related UNHCR bureau - when left null,
+#'               it will display the whole world
+#' @param pop_type Vector of character values. Possible population type
+#'                 (e.g.: REF, IDP, ASY, OIP, OOC, STA)
 #'
 #' @importFrom ggplot2  ggplot  aes  coord_flip   element_blank element_line
 #'             element_text expansion geom_bar geom_col geom_hline unit stat_summary

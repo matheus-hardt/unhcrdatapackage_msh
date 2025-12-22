@@ -9,7 +9,8 @@ plot_reg_solution(year = 2024, region = "The Americas", lag = 10)
 \arguments{
 \item{year}{Numeric value of the year (for instance 2020)}
 
-\item{region}{Character value with the related UNHCR bureau - when left null, it will display the whole world}
+\item{region}{Character value with the related UNHCR bureau - when left null,
+it will display the whole world}
 
 \item{lag}{Number of year to used as comparison base}
 }
