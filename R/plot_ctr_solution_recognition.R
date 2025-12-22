@@ -9,7 +9,8 @@
 #' @param lag Number of year to used as comparison base
 #' @param category_font_size Numeric value for axis text font size, default to 10
 #'
-#' @import ForcedDisplacementStat
+#'
+
 #' @importFrom unhcrthemes theme_unhcr
 #' @importFrom ggtext element_markdown
 #' @importFrom dplyr  desc select  filter mutate group_by filter summarise ungroup

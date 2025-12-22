@@ -27,7 +27,6 @@ Imports:
     dplyr,
     fontawesome,
     forcats,
-    ForcedDisplacementStat,
     ggalluvial,
     ggbraid,
     ggforce,
@@ -82,7 +81,6 @@ VignetteBuilder:
     knitr
 Remotes: 
     coolbutuseless/ggsvg,
-    edouard-legoupil/ForcedDisplacementStat,
     edouard-legoupil/unhcrshiny,
     nsgrantham/ggbraid
 Config/fusen/version: 0.7.2

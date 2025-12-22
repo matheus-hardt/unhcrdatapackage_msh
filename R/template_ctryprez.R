@@ -60,9 +60,9 @@ template_CtryPrez <- function(year = 2024,
     dir.create(output_dir)
   }
 
-  ctrname <- ForcedDisplacementStat::reference |>
-    dplyr::filter(iso_3 == country_asylum_iso3c) |>
-    dplyr::select(ctryname) |>
+  ctrname <- refugees::population |>
+    dplyr::filter(coa_iso == country_asylum_iso3c) |>
+    dplyr::distinct(coa_name) |>
     dplyr::pull()
 
   rmarkdown::render(

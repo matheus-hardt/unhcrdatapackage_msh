@@ -31,7 +31,8 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom unhcrthemes theme_unhcr
 #' @importFrom viridis scale_fill_viridis
-#' @import ForcedDisplacementStat
+#'
+
 #'
 #' @return a ggplot2 object
 #'

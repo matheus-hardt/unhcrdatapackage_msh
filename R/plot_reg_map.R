@@ -110,11 +110,6 @@ plot_reg_map <- function(year = 2024,
   ## Get spatial data to add ##########
   mapproject <- ""
 
-  # listctr <- ForcedDisplacementStat::reference |>
-  #   filter(UNHCRBureau == region) |>
-  #   select(iso_3) |>
-  #   pull()
-
 
   ## Loading the stat tables ######
   data <- refugees::population |>

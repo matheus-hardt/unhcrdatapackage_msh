@@ -1,3 +1,38 @@
+dev_golem_module.Rmd:
+  path: dev/dev_golem_module.Rmd
+  state: active
+  R:
+  - R/mod_categories_ui.R
+  - R/mod_demographics_ui.R
+  - R/mod_destination_ui.R
+  - R/mod_home_ui.R
+  - R/mod_input_ui.R
+  - R/mod_migrants_ui.R
+  - R/mod_origin_ui.R
+  - R/mod_plotviz_ui.R
+  - R/mod_processing_ui.R
+  - R/mod_solution_ui.R
+  tests:
+  - tests/testthat/test-mod_home_ui.R
+  - tests/testthat/test-mod_input_ui.R
+  - tests/testthat/test-mod_plotviz_ui.R
+  - tests/testthat/test-mod_categories_ui.R
+  - tests/testthat/test-mod_origin_ui.R
+  - tests/testthat/test-mod_destination_ui.R
+  - tests/testthat/test-mod_demographics_ui.R
+  - tests/testthat/test-mod_processing_ui.R
+  - tests/testthat/test-mod_solution_ui.R
+  - tests/testthat/test-mod_migrants_ui.R
+  vignettes: vignettes/get-started.Rmd
+  inflate:
+    flat_file: dev/dev_golem_module.Rmd
+    vignette_name: Get started
+    open_vignette: true
+    check: false
+    document: true
+    overwrite: 'yes'
+    clean: ask
+    codecov: false
 dev_plot_Country.Rmd:
   path: dev/dev_plot_Country.Rmd
   state: active
