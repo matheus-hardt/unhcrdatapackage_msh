@@ -64,7 +64,7 @@ plot_reg_treemap <- function(year = 2024,
   ## Filter popdata for the country report
   datatree_pre <- refugees::population |>
     dplyr::filter(year == !!year) |>
-    dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region")) |>
+    dplyr::mutate(unhcr_region = countrycode::countrycode(coa_iso, "iso3c", "unhcr.region", warn = FALSE)) |>
     dplyr::filter(unhcr_region == region)
 
   if (nrow(datatree_pre) == 0) {
@@ -136,10 +136,10 @@ plot_reg_treemap <- function(year = 2024,
     )
   ) +
     treemapify::geom_treemap() +
-    treemapify::geom_treemap_text(
-      colour = "white",
-      place = "centre", size = 15
-    ) +
+    # treemapify::geom_treemap_text(
+    #   colour = "white",
+    #   place = "centre", size = 15
+    # ) +
     ggplot2::scale_fill_manual(values = c(
       "IDP" = "#00B398",
       "OIP" = "#EF4A60",

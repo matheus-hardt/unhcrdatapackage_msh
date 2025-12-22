@@ -30,13 +30,11 @@ Generate all country factsheet
 # year <- 2024
 # library(tidyverse)
 # ## get all countries with more than 1000 Reported individuals
-# ctr <- dplyr::left_join( x= ForcedDisplacementStat::end_year_population_totals_long,
-#                                 y= ForcedDisplacementStat::reference,
-#                                 by = c("CountryAsylumCode" = "iso_3")) |>
-#         filter(Year == year &
-#                 UNHCRBureau == region ) |>
-#         group_by( CountryAsylumName, CountryAsylumCode   ) |>
-#         summarise(Value = sum(Value) ) |>
+# ctr <- refugees::population |>
+#         filter(year == year &
+#                 coa_region == region ) |>
+#         group_by( coa_name, coa_iso   ) |>
+#         summarise(Value = sum(refugees, asylum_seekers, idps, oip, stateless, others_of_concern, na.rm=TRUE) ) |>
 #         ungroup() |>
 #         filter( Value  > 1000 )
 #
