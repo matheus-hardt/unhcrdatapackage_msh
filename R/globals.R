@@ -12,6 +12,10 @@ globalVariables(unique(c(
   "f_total", "m_total", "f_0_4", "f_5_11", "f_12_17", "f_18_59", "f_60", "f_other",
   "m_0_4", "m_5_11", "m_12_17", "m_18_59", "m_60", "m_other",
   "Class", "Sum", "Count",
+  "resettlement", "returned_refugees", "naturalisation",
+  "Recognitions", "Solutions",
+  "new_refugee_recognitions_and_refugee_like_increases",
+  "refugee_solutions_naturalisation_resettlement_and_returns",
   # plot_ctr_keyfig
   "icon", "pal", "fig",
   # plot_ctr_asylum:
