@@ -4038,7 +4038,7 @@ plot_ctr_solution <- function(
         ),
         x = "",
         y = "",
-        caption = "Source: UNHCR.org/refugee-statistics.\n Resettlement – in this context this is the country of arrival – i.e. the country to which a refugee has been resettled \n Returns – in this context this is the country of departure – i.e. the country from which a refugee has voluntarily repatriated."
+        caption = "Source: UNHCR.org/refugee-statistics.\n Resettlement - in this context this is the country of arrival - i.e. the country to which a refugee has been resettled \n Returns - in this context this is the country of departure - i.e. the country from which a refugee has voluntarily repatriated."
       )
   }
 
