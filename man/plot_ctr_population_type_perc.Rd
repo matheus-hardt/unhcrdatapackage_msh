@@ -25,6 +25,8 @@ should display}
 \item{pop_type}{Character value. Possible population type
 (e.g.: REF, IDP, ASY, OIP, OOC, STA)}
 
+\item{show_diff_label}{Logical value to show the difference label or not}
+
 \item{label_font_size}{Numeric value for label font size, default to 4}
 
 \item{category_font_size}{Numeric value for axis text font size, default to 10}
