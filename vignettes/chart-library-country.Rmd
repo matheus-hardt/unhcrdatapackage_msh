@@ -446,7 +446,7 @@ plot_ctr_recognition <- function(year = 2024,
     head(top_n_countries)
 
 
-  rsdorigin <- ggplot() +
+  rsdorigin <- ggplot2::ggplot() +
     geom_bar(
       data = topOrigin1,
       aes(
