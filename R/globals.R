@@ -16,6 +16,7 @@ globalVariables(unique(c(
   "Recognitions", "Solutions",
   "new_refugee_recognitions_and_refugee_like_increases",
   "refugee_solutions_naturalisation_resettlement_and_returns",
+  "dec_total", "dec_recognized", "dec_other",
   # plot_ctr_keyfig
   "icon", "pal", "fig",
   # plot_ctr_asylum:
