@@ -2,28 +2,24 @@
 % Please edit documentation in R/plot_reg_solution.R
 \name{plot_reg_solution}
 \alias{plot_reg_solution}
-\title{Plot Solution over time in the region}
+\title{Plot Regional Solution}
 \usage{
-plot_reg_solution(year = 2024, region = "The Americas", lag = 10)
-}
-\arguments{
-\item{year}{Numeric value of the year (for instance 2020)}
-
-\item{region}{Character value with the related UNHCR bureau - when left null,
-it will display the whole world}
-
-\item{lag}{Number of year to used as comparison base}
-}
-\value{
-a ggplot2 object
-}
-\description{
-Description
-}
-\examples{
 plot_reg_solution(
   year = 2024,
   region = "The Americas",
-  lag = 10
+  lag = 10,
+  label_font_size = 4,
+  category_font_size = 10
+)
+}
+\description{
+Plot Regional Solution
+}
+\examples{
+plot_reg_solution(
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 4,
+    category_font_size = 10
 )
 }

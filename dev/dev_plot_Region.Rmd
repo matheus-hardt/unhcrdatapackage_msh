@@ -7,12 +7,12 @@ editor_options:
 
 ```{r development, include=FALSE}
 knitr::opts_chunk$set(
-  comment = "#>",
-  message = FALSE,
-  warning = FALSE,
-  fig.width = 8,
-  fig.asp = 0.718,
-  out.width = "90%"
+    comment = "#>",
+    message = FALSE,
+    warning = FALSE,
+    fig.width = 8,
+    fig.asp = 0.718,
+    out.width = "90%"
 )
 unlink(".RData")
 library(testthat)
@@ -81,6 +81,9 @@ cols_poptype_abbr <- c(
 ## 1. Population group in the region (Treemap) - Refactored
 
 ```{r function-plot_reg_treemap}
+#' Plot Regional Treemap
+#' @import treemapify
+#' @export
 plot_reg_treemap <- function(year = 2024,
                              region = "The Americas",
                              pop_type = c("REF", "ASY", "IDP", "OIP", "OOC", "STA"),
@@ -183,6 +186,8 @@ plot_reg_treemap(
 ## 2. Plot World Comparison - Refactored
 
 ```{r function-plot_reg_share}
+#' Plot Regional Share
+#' @export
 plot_reg_share <- function(year = 2024,
                            region = "The Americas",
                            pop_type = "REF",
@@ -271,6 +276,8 @@ plot_reg_share(
 ## 3. Evolution Over Time - Refactored
 
 ```{r function-plot_reg_population_type_per_year}
+#' Plot Regional Population Type per Year
+#' @export
 plot_reg_population_type_per_year <- function(year = 2024,
                                               region = "The Americas",
                                               lag = 5,
@@ -391,6 +398,8 @@ plot_reg_population_type_per_year(
 ```{r function-plot_reg_origin_dest}
 # Note: Chord diagram is base graphics, styling is limited. Kept as is.
 
+#' Plot Regional Origin Destination
+#' @export
 plot_reg_origin_dest <- function(year = 2024, region = "The Americas") {
     chords <- refugees::population |>
         dplyr::filter(year == !!year) |>
@@ -495,6 +504,8 @@ plot_reg_origin_dest(
 ## 5. Plot Main country of Asylum - Refactored
 
 ```{r function-plot_reg_population_type_abs}
+#' Plot Regional Population Type Absolute
+#' @export
 plot_reg_population_type_abs <- function(year = 2024,
                                          region = "The Americas",
                                          top_n_countries = 5,
@@ -593,6 +604,8 @@ plot_reg_population_type_abs(
 ## 6. Plot Biggest Decrease - Refactored
 
 ```{r function-plot_reg_decrease}
+#' Plot Regional Decrease
+#' @export
 plot_reg_decrease <- function(year = 2024,
                               lag = 5,
                               topn = 5,
@@ -702,6 +715,8 @@ plot_reg_decrease(
 ```{r function-plot_reg_increase}
 # Note: Keeping mostly same but improving theme if needed
 
+#' Plot Regional Increase
+#' @export
 plot_reg_increase <- function(year = 2024,
                               lag = 5,
                               topn = 5,
@@ -835,6 +850,8 @@ plot_reg_increase(
 ## 8. Proportion of the population who are refugees (origin) - Refactored
 
 ```{r function-plot_reg_prop_origin}
+#' Plot Regional Proportion Origin
+#' @export
 plot_reg_prop_origin <- function(year = 2024, region = "The Americas", label_font_size = 6, category_font_size = 10) {
     wb_data <- WDI::WDI(
         country = "all",
@@ -930,6 +947,9 @@ plot_reg_prop_origin(
 ## 9. Refugee Status Determination - Refactored
 
 ```{r function-plot_reg_rsd}
+#' Plot Regional RSD
+#' @import patchwork
+#' @export
 plot_reg_rsd <- function(year = 2024,
                          region,
                          top_n_countries = 10,
@@ -1066,6 +1086,8 @@ plot_reg_rsd(
 ## 10. Evolution of Solutions - Refactored
 
 ```{r function-plot_reg_solution}
+#' Plot Regional Solution
+#' @export
 plot_reg_solution <- function(year = 2024,
                               region = "The Americas",
                               lag = 10,
@@ -1158,6 +1180,8 @@ plot_reg_solution(
 ## 11. Plot Regional Map - Refactored
 
 ```{r function-plot_reg_map}
+#' Plot Regional Map
+#' @export
 plot_reg_map <- function(year = 2024,
                          region = "The Americas",
                          topn = 5,

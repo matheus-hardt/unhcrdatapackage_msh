@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>UNHCR Population Statistics Database with Chart Library and Factsheet Template • unhcrdatapackage</title>
+<title>UNHCR Population Statistics Database with Chart Library and Factsheet Template • unhcrviz</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -18,8 +18,8 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="UNHCR Population Statistics Database with Chart Library and Factsheet Template">
-<meta name="description" content="This is a data package with all frames organised and reshapped for easy consumptions in R. For more information, please see consult [https://www.unhcr.org/refugee-statistics/](https://www.unhcr.org/refugee-statistics). The packages also includes a series of plotting functions both at country and regional level together with Rmd Templates.">
-<meta property="og:description" content="This is a data package with all frames organised and reshapped for easy consumptions in R. For more information, please see consult [https://www.unhcr.org/refugee-statistics/](https://www.unhcr.org/refugee-statistics). The packages also includes a series of plotting functions both at country and regional level together with Rmd Templates.">
+<meta name="description" content="This is a data package with all frames organised and reshapped for easy consumptions in R. For more information, please see consult [https://www.unhcr.org/refugee-statistics/] (https://www.unhcr.org/refugee-statistics). The packages also includes a series of plotting functions both at country and regional level together with Rmd Templates.">
+<meta property="og:description" content="This is a data package with all frames organised and reshapped for easy consumptions in R. For more information, please see consult [https://www.unhcr.org/refugee-statistics/] (https://www.unhcr.org/refugee-statistics). The packages also includes a series of plotting functions both at country and regional level together with Rmd Templates.">
 <meta property="og:image" content="/logo.png">
 </head>
 <body>
@@ -28,7 +28,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
 
-    <a class="navbar-brand me-2" href="index.html">unhcrdatapackage</a>
+    <a class="navbar-brand me-2" href="index.html">unhcrviz</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.9</small>
 
@@ -56,7 +56,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/edouard-legoupil/unhcrdatapackage/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/edouard-legoupil/unhcrviz/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -66,27 +66,30 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="unhcrdatapackage-a-chart-library-on-forced-displacement-">
-<a href="https://edouard-legoupil.github.io/unhcrdatapackage" class="external-link"><code>{UnhcrDataPackage}</code></a>: A Chart Library on Forced Displacement <a class="anchor" aria-label="anchor" href="#unhcrdatapackage-a-chart-library-on-forced-displacement-"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="unhcrviz-a-chart-library-on-forced-displacement-">
+<a href="https://edouard-legoupil.github.io/unhcrviz" class="external-link"><code>{unhcrviz}</code></a>: A Chart Library on Forced Displacement <a class="anchor" aria-label="anchor" href="#unhcrviz-a-chart-library-on-forced-displacement-"></a>
 </h1>
 </div>
+<blockquote>
+<p>[!IMPORTANT] This package was formerly known as <code>unhcrdatapackage</code>. It has been renamed to <code>unhcrviz</code>.</p>
+</blockquote>
 <blockquote>
 <p>“<strong>Numbers have an important story to tell. They rely on YOU to give them a voice!</strong>”</p>
 </blockquote>
 <blockquote>
 <p>– Stephen Few</p>
 </blockquote>
-<p>The package conveniently bring together a series of predefined plots in order to improve data literacy and facilitate the creation of <strong><a href="https://edouard-legoupil.github.io/unhcrdatapackage/tuto/tutorial.html" class="external-link">persuasive data stories</a></strong>. You can also consult directly the <a href="https://rstudio.unhcr.org/Data_Literacy/" class="external-link">Data Storytelling App</a> created from this package.</p>
-<p>Each plot is created through a function that provides a <strong>recipe</strong> that creates a re-usable chart in line with a <a href="https://www.columnfivemedia.com/divisible-content-strategy-gives-brand-less/" class="external-link">Divisible Content Strategy</a>. Those functions are then rendered through predefined Report templates for Countries or Regions, generated either as html, PDF or PowerPoint presentations. You may <a href="https://edouard-legoupil.github.io/unhcrdatapackage/articles/library.html" class="external-link">enhance the charts story-telling ability</a> by adjusting the message in the title, highlighting specific parts of the data or adding annotation to ease interpretation or provide more contextual background.</p>
+<p>The package conveniently bring together a series of predefined plots in order to improve data literacy and facilitate the creation of <strong><a href="https://edouard-legoupil.github.io/unhcrviz/tuto/tutorial.html" class="external-link">persuasive data stories</a></strong>. You can also consult directly the <a href="https://rstudio.unhcr.org/Data_Literacy/" class="external-link">Data Storytelling App</a> created from this package.</p>
+<p>Each plot is created through a function that provides a <strong>recipe</strong> that creates a re-usable chart in line with a <a href="https://www.columnfivemedia.com/divisible-content-strategy-gives-brand-less/" class="external-link">Divisible Content Strategy</a>. Those functions are then rendered through predefined Report templates for Countries or Regions, generated either as html, PDF or PowerPoint presentations. You may <a href="https://edouard-legoupil.github.io/unhcrviz/articles/library.html" class="external-link">enhance the charts story-telling ability</a> by adjusting the message in the title, highlighting specific parts of the data or adding annotation to ease interpretation or provide more contextual background.</p>
 <p>You can consult <a href="https://matheus-hardt.github.io/unhcrreports/" class="external-link">{unhcrreports}</a> to benefit from AI automated analysis reports.</p>
-<p>You can consult the default <a href="https://edouard-legoupil.github.io/unhcrdatapackage/factsheet/factsheet.html" class="external-link">Factsheets for the Americas through that link</a>.</p>
-<p>Note, that if only need the data you can use directly <a href="https://edouard-legoupil.github.io/ForcedDisplacementStat/" class="external-link"><code>{ForcedDisplacementStat}</code></a>. You can also explore data through <a href="https://www.unhcr.org/refugee-statistics/" class="external-link">Refugee Data Finder</a>.</p>
+<p>You can consult the default <a href="https://edouard-legoupil.github.io/unhcrviz/factsheet/factsheet.html" class="external-link">Factsheets for the Americas through that link</a>.</p>
+<p>Note, that if only need the data you can use directly <a href="https://cran.r-project.org/web/packages/refugees/index.html" class="external-link"><code>{refugees}</code></a>. You can also explore data through <a href="https://www.unhcr.org/refugee-statistics/" class="external-link">Refugee Data Finder</a>.</p>
 <p>This package promotes <a href="https://unhcr-americas.github.io/reproducibility" class="external-link">reproducible approaches</a>.If you are UNHCR Staff and want to learn R, visit <a href="https://unhcr.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=e90e2279-e3a4-4ef2-8b74-757f91d224b2" class="external-link">UNHCR Learn &amp; Connect- R training</a>. For Designers, convenient versions of each plot in <strong>svg</strong> format (usable with Illustrator/Inkscape or Indesign/Scribus) can be generated directly with: <code>unhcrthemes::unhcr_save(plot, "plot.svg")</code>.</p>
 <div class="section level2">
 <h2 id="missing-chart">Missing chart<a class="anchor" aria-label="anchor" href="#missing-chart"></a>
 </h2>
-<p>You can submit <strong>request for new charts</strong> <a href="https://github.com/Edouard-Legoupil/unhcrdatapackage/issues/new" class="external-link">here</a></p>
-<p><strong>Contributions</strong>, specifically creation of new functions for the chart library are welcome! Please <a href="https://edouard-legoupil.github.io/unhcrdatapackage/articles/adding-new-charts.html" class="external-link">consult instructions here</a></p>
+<p>You can submit <strong>request for new charts</strong> <a href="https://github.com/Edouard-Legoupil/unhcrviz/issues/new" class="external-link">here</a></p>
+<p><strong>Contributions</strong>, specifically creation of new functions for the chart library are welcome! Please <a href="https://edouard-legoupil.github.io/unhcrviz/articles/adding-new-charts.html" class="external-link">consult instructions here</a></p>
 </div>
 <div class="section level2">
 <h2 id="install">Install<a class="anchor" aria-label="anchor" href="#install"></a>
@@ -95,16 +98,16 @@
 <p>You can also install the package locally to use it. If you are on Windows, you will first need to install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">Rtools</a> on the top of <a href="https://cran.r-project.org/bin/windows/base/" class="external-link">R</a> and <a href="https://posit.co/download/rstudio-desktop/" class="external-link">Rstudio</a> in order to install the package locally.</p>
 <p>Make sure to have your <strong>JAVA_HOME</strong> environment variable set up as it will be used for the map generation functions</p>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"edouard-legoupil/unhcrdatapackage"</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"edouard-legoupil/unhcrviz"</span><span class="op">)</span></span></code></pre>
 <pre><code><span><span class="co">## you can then run the app locally with</span></span>
-<span><span class="fu">unhcrdatapackage</span><span class="fu">::</span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">unhcrviz</span><span class="fu">::</span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/edouard-legoupil/unhcrdatapackage/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/edouard-legoupil/unhcrdatapackage/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/edouard-legoupil/unhcrviz/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/edouard-legoupil/unhcrviz/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
 
@@ -120,7 +123,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing unhcrdatapackage</a></li>
+<li><a href="authors.html#citation">Citing unhcrviz</a></li>
 </ul>
 </div>
 

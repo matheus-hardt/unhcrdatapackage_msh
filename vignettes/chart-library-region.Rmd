@@ -23,264 +23,191 @@ library(unhcrviz)
 
 
 
+```{r setup-constants}
+# --- Standard Constants for UNHCR Style ---
+# Defined to match dev_plot_Country
+dict_pop_type_label <- c(
+    "refugees" = "REF",
+    "returned_refugees" = "RETURNED_REF",
+    "asylum_seekers" = "ASY",
+    "idps" = "IDP",
+    "returned_idps" = "RETURNED_IDP",
+    "oip" = "OIP",
+    "stateless" = "STA",
+    "ooc" = "OOC",
+    "hst" = "HST"
+)
 
+cols_poptype <- c(
+    "Refugees" = "#0072BC",
+    "Asylum-seekers" = "#6CD8FD",
+    "Internally displaced\npersons" = "#32C189",
+    "Other people in need\nof international protection" = "#D25A45",
+    "Stateless people" = "#FFC740",
+    "Others of concern\nto UNHCR" = "#A097E3",
+    "Host community" = "#BFBFBF",
+    "Returned refugees" = "#00B398",
+    "Returned idps" = "#00B398",
+    "Other" = "#BFBFBF"
+)
 
-## Population group in the region  
-    
-  
-```{r example-plot_reg_treemap}
-plot_reg_treemap(year = 2024, region = "The Americas")
+# For plots that use abbreviations keys
+cols_poptype_abbr <- c(
+    "REF" = "#0072BC",
+    "ASY" = "#6CD8FD",
+    "IDP" = "#32C189",
+    "OIP" = "#D25A45",
+    "STA" = "#FFC740",
+    "OOC" = "#A097E3",
+    "HST" = "#BFBFBF",
+    "HCO" = "#BFBFBF"
+)
 ```
 
-  
-  
 
-## Plot World Comparison
+## 1. Population group in the region (Treemap) - Refactored
 
-    
-  
+```{r example-plot_reg_treemap}
+plot_reg_treemap(
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 15
+)
+```
+
+
+
+
+## 2. Plot World Comparison - Refactored
+
 ```{r example-plot_reg_share}
 plot_reg_share(
-  year = 2024,
-  region = "The Americas",
-  pop_type = "REF"
-)
-plot_reg_share(
-  year = 2024,
-  region = "The Americas",
-  pop_type = "ASY"
-)
-plot_reg_share(
-  year = 2024,
-  region = "The Americas",
-  pop_type = "OIP"
-)
-plot_reg_share(
-  year = 2024,
-  region = "The Americas",
-  pop_type = "IDP"
-)
-plot_reg_share(
-  year = 2024,
-  region = "The Americas",
-  pop_type = "STA"
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 15
 )
 ```
 
-  
-  
 
-## Evolution Over Time  
-    
-  
+
+
+## 3. Evolution Over Time - Refactored
 
 ```{r example-plot_reg_population_type_per_year}
 plot_reg_population_type_per_year(
-  year = 2024,
-  lag = 5,
-  region = "The Americas",
-  pop_type = c("REF", "ASY", "IDP", "OIP", "STA", "OOC")
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 4,
+    category_font_size = 10,
+    legend_font_size = 10
 )
 ```
 
-  
-  
 
-## Plot Population Origin-Destination within the region 
-    
-  
+
+
+## 4. Plot Population Origin-Destination - Refactored
+
 ```{r example-plot_reg_origin_dest}
-plot_reg_origin_dest(year = 2024, region = "Asia")
-```
-
-  
-  
-
-
-## Plot Main country of Asylum in the Region
-
-```{r examples-plot_reg_population_type_abs}
-#| fig.retina: 2.0
-#| fig.width: 8.0
-#| fig.asp: 0.618
-#| fig.align: center
-#| dev: ragg_png
-#| out.width: 90%
-
-plot_reg_population_type_abs(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 5,
-  pop_type = "REF",
-  show_diff_label = TRUE
-)
-
-plot_reg_population_type_abs(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 5,
-  pop_type = "ASY",
-  show_diff_label = FALSE
+plot_reg_origin_dest(
+    year = 2024,
+    region = "The Americas"
 )
 ```
 
 
 
 
-## Plot Biggest decrease in Refugee Population
- 
-    
-  
+## 5. Plot Main country of Asylum - Refactored
+
+```{r example-plot_reg_population_type_abs}
+plot_reg_population_type_abs(
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 6,
+    category_font_size = 10
+)
+```
+
+
+
+
+## 6. Plot Biggest Decrease - Refactored
+
 ```{r example-plot_reg_decrease}
 plot_reg_decrease(
-  year = 2024,
-  lag = 5,
-  topn = 5,
-  region = "The Americas",
-  pop_type = c("REF", "ASY", "OIP")
+    year = 2024,
+    region = "The Americas",
+    category_font_size = 10
 )
 ```
 
-  
-  
-    
-## Plot Biggest increase in Refugee Population 
-    
 
-  
+
+
+## 7. Plot Biggest Increase - Refactored
+
 ```{r example-plot_reg_increase}
 plot_reg_increase(
-  year = 2024,
-  lag = 5,
-  topn = 5,
-  region = "The Americas",
-  pop_type = c("REF", "ASY", "OIP")
+    year = 2024,
+    region = "The Americas",
+    category_font_size = 10
 )
-
-# plot_reg_increase(
-#   year = 2024,
-#   lag = 5,
-#   topn = 5,
-#   region = "Asia",
-#   pop_type = c("REF", "ASY", "OIP")
-# )
 ```
 
-  
-  
 
-## Proportion of the population who are refugees, by country of origin  (SDG indicator 10.7.4 ) 
-  
+
+
+## 8. Proportion of the population who are refugees (origin) - Refactored
+
 ```{r example-plot_reg_prop_origin}
-plot_reg_prop_origin(year = 2024, region = "The Americas")
+plot_reg_prop_origin(
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 6,
+    category_font_size = 10
+)
 ```
 
-  
-  
- 
 
-## Decision on Refugee Status Determination
-  
+
+
+## 9. Refugee Status Determination - Refactored
+
 ```{r example-plot_reg_rsd}
 plot_reg_rsd(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 10,
-  measure = "Recognized"
+    year = 2024,
+    region = "The Americas",
+    measure = "Recognized",
+    category_font_size = 10
 )
-
-
-plot_reg_rsd(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 5,
-  measure = "ComplementaryProtection"
-)
-
-
-plot_reg_rsd(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 10,
-  measure = "TotalDecided"
-)
-
-
-plot_reg_rsd(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 10,
-  measure = "RefugeeRecognitionRate"
-)
-
-
-plot_reg_rsd(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 10,
-  measure = "TotalRecognitionRate"
-)
-
-
-# plot_reg_rsd(year = 2024,
-#              region = "Europe",
-#                         top_n_countries = 10,
-#                         measure = "Recognized")
 ```
 
-  
-  
 
 
-    
-## Plot Evolution of Solutions in the Region
 
-    
-  
+## 10. Evolution of Solutions - Refactored
+
 ```{r example-plot_reg_solution}
 plot_reg_solution(
-  year = 2024,
-  region = "The Americas",
-  lag = 10
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 4,
+    category_font_size = 10
 )
 ```
 
-  
-  
 
-## Mapping Population  
 
-    
-  
+
+## 11. Plot Regional Map - Refactored
+
 ```{r example-plot_reg_map}
 plot_reg_map(
-  year = 2024,
-  region = "The Americas",
-  topn = 5,
-  pop_type = c("REF", "ASY", "OIP"),
-  projection = "Mercator",
-  maxSymbolsize = .25
+    year = 2024,
+    region = "The Americas"
 )
-
-
-# plot_reg_map(  year = 2024,
-#                             region = "WestAfrica",
-#                             topn = 5,
-#                             pop_type =  c("REF", "ASY", "OIP"),
-#                             projection = "Mercator",
-#                             maxSymbolsize = .25)
 ```
 
-  
-  
- 
-    
-     
 
-
---- 
-
-
-
-# Refresh package
 

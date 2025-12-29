@@ -2,49 +2,26 @@
 % Please edit documentation in R/plot_reg_population_type_abs.R
 \name{plot_reg_population_type_abs}
 \alias{plot_reg_population_type_abs}
-\title{Plot Main country of Asylum in the Region}
+\title{Plot Regional Population Type Absolute}
 \usage{
 plot_reg_population_type_abs(
   year = 2024,
   region = "The Americas",
   top_n_countries = 5,
   pop_type = "REF",
-  show_diff_label = TRUE
+  show_diff_label = TRUE,
+  label_font_size = 6,
+  category_font_size = 10
 )
 }
-\arguments{
-\item{year}{Numeric value of the year (for instance 2020)}
-
-\item{region}{Character value with the related UNHCR bureau - when left null,
-it will display the whole world}
-
-\item{top_n_countries}{Numeric value of number of main countries that the graph should display}
-
-\item{pop_type}{Character value. Possible population type
-(e.g.: REF, IDP, ASY, OIP, OOC, STA)}
-
-\item{show_diff_label}{logical to indicate whether or not adding the the label displaying difference in percentage compared to the previous year}
-}
-\value{
-a ggplot2 object
-}
 \description{
-Plot Main country of Asylum in the Region
+Plot Regional Population Type Absolute
 }
 \examples{
 plot_reg_population_type_abs(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 5,
-  pop_type = "REF",
-  show_diff_label = TRUE
-)
-
-plot_reg_population_type_abs(
-  year = 2024,
-  region = "The Americas",
-  top_n_countries = 5,
-  pop_type = "ASY",
-  show_diff_label = FALSE
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 6,
+    category_font_size = 10
 )
 }

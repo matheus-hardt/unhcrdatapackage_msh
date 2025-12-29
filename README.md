@@ -17,7 +17,7 @@ You can consult [{unhcrreports}](https://matheus-hardt.github.io/unhcrreports/) 
 
 You can consult the default [Factsheets for the Americas through that link](https://edouard-legoupil.github.io/unhcrviz/factsheet/factsheet.html). 
 
-Note, that if only need the data you can use directly [`{ForcedDisplacementStat}`](https://edouard-legoupil.github.io/ForcedDisplacementStat/). You can also explore data through  [Refugee Data Finder](https://www.unhcr.org/refugee-statistics/).
+Note, that if only need the data you can use directly [`{refugees}`](https://cran.r-project.org/web/packages/refugees/index.html). You can also explore data through  [Refugee Data Finder](https://www.unhcr.org/refugee-statistics/).
 
 This package promotes [reproducible approaches](https://unhcr-americas.github.io/reproducibility).If you are UNHCR Staff and want to learn R, visit [UNHCR Learn & Connect- R training](https://unhcr.csod.com/ui/lms-learner-playlist/PlaylistDetails?playlistId=e90e2279-e3a4-4ef2-8b74-757f91d224b2).
 For Designers, convenient versions of each plot in __svg__ format (usable with Illustrator/Inkscape or Indesign/Scribus) can be generated directly  with: `unhcrthemes::unhcr_save(plot, "plot.svg")`.

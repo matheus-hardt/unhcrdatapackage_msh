@@ -2,41 +2,24 @@
 % Please edit documentation in R/plot_reg_decrease.R
 \name{plot_reg_decrease}
 \alias{plot_reg_decrease}
-\title{Plot Biggest decrease in Refugee Population}
+\title{Plot Regional Decrease}
 \usage{
 plot_reg_decrease(
   year = 2024,
   lag = 5,
   topn = 5,
   region = "The Americas",
-  pop_type = c("REF", "ASY", "OIP")
+  pop_type = c("REF", "ASY", "OIP"),
+  category_font_size = 10
 )
 }
-\arguments{
-\item{year}{Numeric value of the year (for instance 2020)}
-
-\item{lag}{Number of year to used as comparison base}
-
-\item{topn}{how many top countries to show..}
-
-\item{region}{Character value with the related UNHCR bureau - when left null,
-it will display the whole world}
-
-\item{pop_type}{Vector of character values. Possible population type
-(e.g.: REF, IDP, ASY, OIP, OOC, STA)}
-}
-\value{
-a ggplot2 object
-}
 \description{
-Plot Biggest decrease in Refugee Population
+Plot Regional Decrease
 }
 \examples{
 plot_reg_decrease(
-  year = 2024,
-  lag = 5,
-  topn = 5,
-  region = "The Americas",
-  pop_type = c("REF", "ASY", "OIP")
+    year = 2024,
+    region = "The Americas",
+    category_font_size = 10
 )
 }

@@ -2,29 +2,22 @@
 % Please edit documentation in R/plot_reg_treemap.R
 \name{plot_reg_treemap}
 \alias{plot_reg_treemap}
-\title{Population group in the region}
+\title{Plot Regional Treemap}
 \usage{
 plot_reg_treemap(
   year = 2024,
   region = "The Americas",
-  pop_type = c("REF", "ASY", "IDP", "OIP", "OOC", "STA")
+  pop_type = c("REF", "ASY", "IDP", "OIP", "OOC", "STA"),
+  label_font_size = 15
 )
 }
-\arguments{
-\item{year}{Numeric value of the year (for instance 2020)}
-
-\item{region}{Character value with the related UNHCR bureau - when left null,
-it will display the whole world}
-
-\item{pop_type}{Vector of character values. Possible population type
-(e.g.: REF, IDP, ASY, OIP, OOC, STA)}
-}
-\value{
-plot a ggplot2 object
-}
 \description{
-Population group in the region
+Plot Regional Treemap
 }
 \examples{
-plot_reg_treemap(year = 2024, region = "The Americas")
+plot_reg_treemap(
+    year = 2024,
+    region = "The Americas",
+    label_font_size = 15
+)
 }
