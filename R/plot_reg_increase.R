@@ -3,6 +3,13 @@
 # Note: Keeping mostly same but improving theme if needed
 
 #' Plot Regional Increase
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param lag Number of year to used as comparison base
+#' @param topn Numeric value for number of top countries to show
+#' @param region Character value including the UNHCR region
+#' @param pop_type Vector of character values. Possible population type
+#' @param category_font_size Numeric value for axis text font size
 #' @export
 #' @examples
 #' plot_reg_increase(

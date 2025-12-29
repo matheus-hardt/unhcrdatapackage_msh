@@ -3,6 +3,9 @@
 # Note: Chord diagram is base graphics, styling is limited. Kept as is.
 
 #' Plot Regional Origin Destination
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
 #' @export
 #' @examples
 #' plot_reg_origin_dest(

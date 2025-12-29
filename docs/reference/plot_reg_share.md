@@ -13,6 +13,24 @@ plot_reg_share(
 )
 ```
 
+## Arguments
+
+- year:
+
+  Numeric value of the year (for instance 2020)
+
+- region:
+
+  Character value including the UNHCR region
+
+- pop_type:
+
+  Vector of character values. Possible population type
+
+- label_font_size:
+
+  Numeric value for label font size
+
 ## Examples
 
 ``` r

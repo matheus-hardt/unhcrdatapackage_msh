@@ -12,6 +12,17 @@ plot_reg_rsd(
   category_font_size = 10
 )
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{region}{Character value including the UNHCR region}
+
+\item{top_n_countries}{Numeric value for number of top countries to show}
+
+\item{measure}{Character value for the measure to display}
+
+\item{category_font_size}{Numeric value for axis text font size}
+}
 \description{
 Plot Regional RSD
 }

@@ -14,6 +14,28 @@ plot_reg_solution(
 )
 ```
 
+## Arguments
+
+- year:
+
+  Numeric value of the year (for instance 2020)
+
+- region:
+
+  Character value including the UNHCR region
+
+- lag:
+
+  Number of year to used as comparison base
+
+- label_font_size:
+
+  Numeric value for label font size
+
+- category_font_size:
+
+  Numeric value for axis text font size
+
 ## Examples
 
 ``` r

@@ -15,6 +15,32 @@ plot_reg_map(
 )
 ```
 
+## Arguments
+
+- year:
+
+  Numeric value of the year (for instance 2020)
+
+- region:
+
+  Character value including the UNHCR region
+
+- topn:
+
+  Numeric value for number of top items
+
+- pop_type:
+
+  Vector of character values. Possible population type
+
+- projection:
+
+  Character value for map projection
+
+- maxSymbolsize:
+
+  Numeric value for maximum symbol size
+
 ## Examples
 
 ``` r

@@ -13,6 +13,19 @@ plot_reg_map(
   maxSymbolsize = 0.25
 )
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{region}{Character value including the UNHCR region}
+
+\item{topn}{Numeric value for number of top items}
+
+\item{pop_type}{Vector of character values. Possible population type}
+
+\item{projection}{Character value for map projection}
+
+\item{maxSymbolsize}{Numeric value for maximum symbol size}
+}
 \description{
 Plot Regional Map
 }

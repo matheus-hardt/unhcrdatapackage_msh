@@ -13,6 +13,19 @@ plot_reg_decrease(
   category_font_size = 10
 )
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{lag}{Number of year to used as comparison base}
+
+\item{topn}{Numeric value for number of top countries to show}
+
+\item{region}{Character value including the UNHCR region}
+
+\item{pop_type}{Vector of character values. Possible population type}
+
+\item{category_font_size}{Numeric value for axis text font size}
+}
 \description{
 Plot Regional Decrease
 }

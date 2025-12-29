@@ -16,6 +16,36 @@ plot_reg_population_type_abs(
 )
 ```
 
+## Arguments
+
+- year:
+
+  Numeric value of the year (for instance 2020)
+
+- region:
+
+  Character value including the UNHCR region
+
+- top_n_countries:
+
+  Numeric value for number of top countries to show
+
+- pop_type:
+
+  Vector of character values. Possible population type
+
+- show_diff_label:
+
+  Boolean to show difference label
+
+- label_font_size:
+
+  Numeric value for label font size
+
+- category_font_size:
+
+  Numeric value for axis text font size
+
 ## Examples
 
 ``` r

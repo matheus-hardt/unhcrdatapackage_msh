@@ -14,6 +14,21 @@ plot_reg_population_type_per_year(
   legend_font_size = 10
 )
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{region}{Character value including the UNHCR region}
+
+\item{lag}{Number of year to used as comparison base}
+
+\item{pop_type}{Vector of character values. Possible population type}
+
+\item{label_font_size}{Numeric value for label font size}
+
+\item{category_font_size}{Numeric value for axis text font size}
+
+\item{legend_font_size}{Numeric value for legend font size}
+}
 \description{
 Plot Regional Population Type per Year
 }

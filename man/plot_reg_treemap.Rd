@@ -11,6 +11,15 @@ plot_reg_treemap(
   label_font_size = 15
 )
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{region}{Character value including the UNHCR region}
+
+\item{pop_type}{Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OIP, OOC, STA)}
+
+\item{label_font_size}{Numeric value for label font size}
+}
 \description{
 Plot Regional Treemap
 }

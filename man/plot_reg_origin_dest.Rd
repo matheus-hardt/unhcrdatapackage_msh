@@ -6,6 +6,11 @@
 \usage{
 plot_reg_origin_dest(year = 2024, region = "The Americas")
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{region}{Character value including the UNHCR region}
+}
 \description{
 Plot Regional Origin Destination
 }

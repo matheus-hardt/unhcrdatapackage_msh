@@ -37,7 +37,7 @@ library(ggsvg)
 pkgload::load_all(export_all = FALSE)
 ```
 
-```{r setup-constants}
+```{r function-utils_region}
 # --- Standard Constants for UNHCR Style ---
 # Defined to match dev_plot_Country
 dict_pop_type_label <- c(
@@ -82,6 +82,11 @@ cols_poptype_abbr <- c(
 
 ```{r function-plot_reg_treemap}
 #' Plot Regional Treemap
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param pop_type Vector of character values. Possible population type (e.g.: REF, IDP, ASY, OIP, OIP, OOC, STA)
+#' @param label_font_size Numeric value for label font size
 #' @import treemapify
 #' @export
 plot_reg_treemap <- function(year = 2024,
@@ -187,6 +192,11 @@ plot_reg_treemap(
 
 ```{r function-plot_reg_share}
 #' Plot Regional Share
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param pop_type Vector of character values. Possible population type
+#' @param label_font_size Numeric value for label font size
 #' @export
 plot_reg_share <- function(year = 2024,
                            region = "The Americas",
@@ -277,6 +287,14 @@ plot_reg_share(
 
 ```{r function-plot_reg_population_type_per_year}
 #' Plot Regional Population Type per Year
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param lag Number of year to used as comparison base
+#' @param pop_type Vector of character values. Possible population type
+#' @param label_font_size Numeric value for label font size
+#' @param category_font_size Numeric value for axis text font size
+#' @param legend_font_size Numeric value for legend font size
 #' @export
 plot_reg_population_type_per_year <- function(year = 2024,
                                               region = "The Americas",
@@ -399,6 +417,9 @@ plot_reg_population_type_per_year(
 # Note: Chord diagram is base graphics, styling is limited. Kept as is.
 
 #' Plot Regional Origin Destination
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
 #' @export
 plot_reg_origin_dest <- function(year = 2024, region = "The Americas") {
     chords <- refugees::population |>
@@ -505,6 +526,14 @@ plot_reg_origin_dest(
 
 ```{r function-plot_reg_population_type_abs}
 #' Plot Regional Population Type Absolute
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param top_n_countries Numeric value for number of top countries to show
+#' @param pop_type Vector of character values. Possible population type
+#' @param show_diff_label Boolean to show difference label
+#' @param label_font_size Numeric value for label font size
+#' @param category_font_size Numeric value for axis text font size
 #' @export
 plot_reg_population_type_abs <- function(year = 2024,
                                          region = "The Americas",
@@ -605,6 +634,13 @@ plot_reg_population_type_abs(
 
 ```{r function-plot_reg_decrease}
 #' Plot Regional Decrease
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param lag Number of year to used as comparison base
+#' @param topn Numeric value for number of top countries to show
+#' @param region Character value including the UNHCR region
+#' @param pop_type Vector of character values. Possible population type
+#' @param category_font_size Numeric value for axis text font size
 #' @export
 plot_reg_decrease <- function(year = 2024,
                               lag = 5,
@@ -716,6 +752,13 @@ plot_reg_decrease(
 # Note: Keeping mostly same but improving theme if needed
 
 #' Plot Regional Increase
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param lag Number of year to used as comparison base
+#' @param topn Numeric value for number of top countries to show
+#' @param region Character value including the UNHCR region
+#' @param pop_type Vector of character values. Possible population type
+#' @param category_font_size Numeric value for axis text font size
 #' @export
 plot_reg_increase <- function(year = 2024,
                               lag = 5,
@@ -851,6 +894,11 @@ plot_reg_increase(
 
 ```{r function-plot_reg_prop_origin}
 #' Plot Regional Proportion Origin
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param label_font_size Numeric value for label font size
+#' @param category_font_size Numeric value for axis text font size
 #' @export
 plot_reg_prop_origin <- function(year = 2024, region = "The Americas", label_font_size = 6, category_font_size = 10) {
     wb_data <- WDI::WDI(
@@ -948,6 +996,12 @@ plot_reg_prop_origin(
 
 ```{r function-plot_reg_rsd}
 #' Plot Regional RSD
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param top_n_countries Numeric value for number of top countries to show
+#' @param measure Character value for the measure to display
+#' @param category_font_size Numeric value for axis text font size
 #' @import patchwork
 #' @export
 plot_reg_rsd <- function(year = 2024,
@@ -1087,6 +1141,12 @@ plot_reg_rsd(
 
 ```{r function-plot_reg_solution}
 #' Plot Regional Solution
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param lag Number of year to used as comparison base
+#' @param label_font_size Numeric value for label font size
+#' @param category_font_size Numeric value for axis text font size
 #' @export
 plot_reg_solution <- function(year = 2024,
                               region = "The Americas",
@@ -1181,6 +1241,13 @@ plot_reg_solution(
 
 ```{r function-plot_reg_map}
 #' Plot Regional Map
+#'
+#' @param year Numeric value of the year (for instance 2020)
+#' @param region Character value including the UNHCR region
+#' @param topn Numeric value for number of top items
+#' @param pop_type Vector of character values. Possible population type
+#' @param projection Character value for map projection
+#' @param maxSymbolsize Numeric value for maximum symbol size
 #' @export
 plot_reg_map <- function(year = 2024,
                          region = "The Americas",

@@ -11,6 +11,15 @@ plot_reg_share(
   label_font_size = 15
 )
 }
+\arguments{
+\item{year}{Numeric value of the year (for instance 2020)}
+
+\item{region}{Character value including the UNHCR region}
+
+\item{pop_type}{Vector of character values. Possible population type}
+
+\item{label_font_size}{Numeric value for label font size}
+}
 \description{
 Plot Regional Share
 }

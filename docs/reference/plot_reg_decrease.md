@@ -15,6 +15,32 @@ plot_reg_decrease(
 )
 ```
 
+## Arguments
+
+- year:
+
+  Numeric value of the year (for instance 2020)
+
+- lag:
+
+  Number of year to used as comparison base
+
+- topn:
+
+  Numeric value for number of top countries to show
+
+- region:
+
+  Character value including the UNHCR region
+
+- pop_type:
+
+  Vector of character values. Possible population type
+
+- category_font_size:
+
+  Numeric value for axis text font size
+
 ## Examples
 
 ``` r

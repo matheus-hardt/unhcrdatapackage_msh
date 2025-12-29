@@ -8,6 +8,16 @@ Plot Regional Origin Destination
 plot_reg_origin_dest(year = 2024, region = "The Americas")
 ```
 
+## Arguments
+
+- year:
+
+  Numeric value of the year (for instance 2020)
+
+- region:
+
+  Character value including the UNHCR region
+
 ## Examples
 
 ``` r

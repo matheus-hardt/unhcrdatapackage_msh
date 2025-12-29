@@ -93,6 +93,7 @@ dev_plot_Region.Rmd:
   - R/plot_reg_share.R
   - R/plot_reg_solution.R
   - R/plot_reg_treemap.R
+  - R/fake-section-title.R
   tests:
   - tests/testthat/test-plot_reg_treemap.R
   - tests/testthat/test-plot_reg_share.R
